@@ -1,0 +1,79 @@
+﻿@model Clinic.BackEnd.Models.Result
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-dialog " style="margin: 0px">
+        <div class="form-horizontal" style="padding: 0px">
+            @Html.ValidationSummary(true)
+
+            @Html.HiddenFor(model => model.User_Id)
+            @Html.HiddenFor(model => model.Sampling_Id)
+            <div class="modal-body ">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LabTest.Name, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.DropDownList("LabTest_Id", String.Empty)
+                        @Html.ValidationMessageFor(model => model.LabTest_Id)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Date)
+                        @Html.ValidationMessageFor(model => model.Date)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SubSample, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.SubSample)
+                        @Html.ValidationMessageFor(model => model.SubSample)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Labresult, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Labresult)
+                        @Html.ValidationMessageFor(model => model.Labresult)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Comment, new { @class = "Fullwide", rows = 3 })
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+        $(document).ready(function () {
+            $(".datePicker").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-50:+5"
+            });
+
+            $("#LabTest_Id").chosen({
+                no_results_text: "Oops, nothing found!",
+                width: "85%",
+                disable_search: true
+
+            });
+        });
+</script>
+

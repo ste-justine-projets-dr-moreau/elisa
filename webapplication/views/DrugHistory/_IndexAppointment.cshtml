@@ -1,0 +1,42 @@
+﻿@using GridMvc.Html
+@model IEnumerable<Clinic.BackEnd.Models.DrugHistory>
+
+
+
+
+@section header {
+    <h1>@Html.Label(Languages.Global.Drug)</h1>
+}
+
+
+<hr />
+
+<p style="text-align: right">
+
+    <input type="button" title="create" value='@Languages.Global.Add' onclick="location.href='@Url.Action("create", "DrugHistory")' ;" class="btn btn-info pull-Right" />
+</p>
+@helper RenderActionColumn(int id)
+{
+    <div class="pull-right">
+
+            <input type="button" title="edit" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "DrugHistory", new { ID = id })' ;" class="btn btn-info" />
+
+    </div>
+}
+
+<div>
+    @Html.Grid(Model).Columns(columns =>
+    {
+
+        columns.Add(c => c.Drug.Name).Titled(Html.DisplayNameFor(x => x.Drug.Name).ToString()).Filterable(true);
+        columns.Add(c => c.StartDate).Titled(Html.DisplayNameFor(x => x.StartDate).ToString()).Filterable(true).Format("{0:yyyy/mm/dd}");
+        columns.Add(c => c.EndDate).Titled(Html.DisplayNameFor(x => x.EndDate).ToString()).Filterable(true).Format("{0:yyyy/mm/dd}");
+        columns.Add(c => c.Dosage).Titled(Html.DisplayNameFor(x => x.Dosage).ToString()).Filterable(true);
+        columns.Add(c => c.Comment).Titled(Html.DisplayNameFor(x => x.Comment).ToString()).Filterable(true);
+        columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+
+    }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+
+</div>
+
+

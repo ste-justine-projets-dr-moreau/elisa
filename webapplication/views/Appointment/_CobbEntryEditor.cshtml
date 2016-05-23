@@ -1,0 +1,45 @@
+﻿@using System.Web.UI.WebControls
+@using WebApplication.Helpers
+@using DropDownList = WebApplication.Helpers.DropDownList
+@model Clinic.BackEnd.Models.Cobb
+
+<tr>
+    @using (Html.BeginCollectionItem("Cobbs"))
+{
+    <td class="grid-cell" >
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Appointment_Id)
+
+        @Html.DropDownList("CobbType_Id", new SelectList(ViewBag.CobbTypes, "Id", "Name", Model.CobbType_Id), new { @class="chosen" })
+        @Html.ValidationMessageFor(model => model.CobbType)
+    </td>
+    <td class="grid-cell" >
+        @Html.TextBoxFor(model => model.Angle, new { style = "width: 100%;" })
+        @Html.ValidationMessageFor(model => model.Angle)
+    </td>
+    <td class="grid-cell">
+        @Html.DropDownListFor(model => model.IsRight, DropDownList.LeftRight((string)ViewBag.Langue), Languages.Global.Select, new { @class="chosen"})
+        @Html.ValidationMessageFor(model => model.IsRight)
+
+    </td>
+    <td >
+        <a href="#" onclick="$(this).parent().parent().remove();" class="glyphicon glyphicon-remove" style="color: Red">
+        </a>
+
+    </td>
+}
+</tr>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $("#CobbType_Id").chosen({
+                no_results_text: "@Languages.Global.Select",
+                width: "50%",
+                disable_search: true
+            });
+        });
+    </script>
+}

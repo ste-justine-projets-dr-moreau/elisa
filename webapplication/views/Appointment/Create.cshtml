@@ -1,0 +1,142 @@
+﻿@model Clinic.BackEnd.Models.Appointment
+
+@{
+    ViewBag.Title = @Languages.Global.New;
+}
+
+@section header {
+    <h3>@Languages.Global.CreateAppointment  </h3>
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <br/>
+    <br />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.User_Id)
+        @Html.HiddenFor(model => model.Participant_Id)
+
+        <div class="row">
+
+            <div class="container">
+                <div class="col-xs-6">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            @Languages.Global.GeneralInfo
+                        </div>
+                        <br />
+                        <div style="padding-left:  5px ">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Date)
+                                    @Html.ValidationMessageFor(model => model.Date)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Height, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Height) (cm)
+                                    @Html.ValidationMessageFor(model => model.Height)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Weight) (kg)
+                                    @Html.ValidationMessageFor(model => model.Weight)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsPain, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+
+                                    @Html.RadioButtonFor(model => model.IsPain, true)
+                                    @Html.Label(Languages.Global.Yes)
+                                    @Html.RadioButtonFor(model => model.IsPain, false)
+                                    @Html.Label(Languages.Global.No)
+                                    @Html.ValidationMessageFor(model => model.IsPain)
+                                </div>
+                            </div>
+                             
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Anovulant, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+
+                                    @Html.RadioButtonFor(model => model.Anovulant, true)
+                                    @Html.Label(Languages.Global.Yes)
+                                    @Html.RadioButtonFor(model => model.Anovulant, false)
+                                    @Html.Label(Languages.Global.No)
+                                    @Html.ValidationMessageFor(model => model.Anovulant)
+                                </div>
+                            </div> 
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsSmoker, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+
+                                    @Html.RadioButtonFor(model => model.IsSmoker, true)
+                                    @Html.Label(Languages.Global.Yes)
+                                    @Html.RadioButtonFor(model => model.IsSmoker, false)
+                                    @Html.Label(Languages.Global.No)
+                                    @Html.ValidationMessageFor(model => model.IsSmoker)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SmokePerDay, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SmokePerDay)
+                                    @Html.ValidationMessageFor(model => model.SmokePerDay)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Risser, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Risser)
+                                    @Html.ValidationMessageFor(model => model.Risser)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="Container">
+            <div class="col-xs-12">
+                <div class=" panel panel-default">
+                    <div class="panel-heading">
+                        @Html.LabelFor(model => model.Comment)
+                    </div>
+                    <div>
+                        @Html.TextAreaFor(model => model.Comment, new { @class = "Fullwide", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="btn-toolbar pull-right ">
+            <div>
+                <a href="@Url.Content("~/Participant")" class="btn btn-danger"><span>@Languages.Global.Cancel </span></a>
+
+                @if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
+                {
+                    <input type="submit" value="@Languages.Global.Save" class="btn btn-success" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

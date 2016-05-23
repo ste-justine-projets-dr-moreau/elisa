@@ -1,0 +1,60 @@
+﻿@model Clinic.BackEnd.Models.Appointment
+@using Clinic.BackEnd.Models
+@using GridMvc.Html
+
+@section header {
+    <h1>@Html.Label(Languages.Global.Sampling)</h1>
+}
+
+
+<hr />
+
+<p style="text-align: right">
+    <input type="button" title="create" value='@Languages.Global.Add' id="addSamplingDialogButton" class="btn btn-info pull-Right" />
+</p>
+@helper RenderActionColumn(int id, String status)
+{
+    <div class="pull-right">
+
+        <input type="button" title="edit" value='@Languages.Global.Edit' class="editSamplingDialogButton btn btn-info" data-sampling-id="@id" />
+        @if (!Model.Samplings.First(s => s.Id == id).Results.Any())
+        {
+            <input type="button" title="delete" value='@Languages.Global.Delete' class="confirmDeleteSamplingDialogButton btn btn-info" data-sampling-id="@id" />
+        }
+
+    </div>
+}
+
+
+<div>
+    @if (Session["Language"].ToString().ToLower() == "en")
+    {
+        @Html.Grid(Model.Samplings).Columns(columns =>
+        {
+            //columns.Add(c => c.Id).Filterable(true).Sanitized(false).Encoded(false).SetWidth(10);
+            columns.Add(c => c.BarCode).Titled(Html.DisplayNameFor(x => x.Samplings.First().BarCode).ToString()).Filterable(true);
+            columns.Add(c => c.SamplingType.Name).Titled(Html.DisplayNameFor(x => x.Samplings.First().SamplingType.Name).ToString()).Filterable(true);
+            columns.Add(c => c.Comment).Titled(Html.DisplayNameFor(x => x.Comment).ToString()).Filterable(true);
+            columns.Add(c => c.SamplingStatu.Name).Titled(Html.DisplayNameFor(x => x.Samplings.First().SamplingStatu.Name).ToString()).Filterable(true);
+            columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id, c.SamplingStatu.Name).ToHtmlString());
+
+        }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+    }
+    else
+    {
+        @Html.Grid(Model.Samplings).Columns(columns =>
+    {
+        //columns.Add(c => c.Id).Filterable(true).Sanitized(false).Encoded(false).SetWidth(10);
+        columns.Add(c => c.BarCode).Titled(Html.DisplayNameFor(x => x.Samplings.First().BarCode).ToString()).Filterable(true);
+        columns.Add(c => c.SamplingType.NameFr).Titled(Html.DisplayNameFor(x => x.Samplings.First().SamplingType.NameFr).ToString()).Filterable(true);
+        columns.Add(c => c.Comment).Titled(Html.DisplayNameFor(x => x.Comment).ToString()).Filterable(true);
+        columns.Add(c => c.SamplingStatu.NameFr).Titled(Html.DisplayNameFor(x => x.Samplings.First().SamplingStatu.NameFr).ToString()).Filterable(true);
+        columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id, c.SamplingStatu.NameFr).ToHtmlString());
+
+    }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+    }
+
+
+</div>
+
+

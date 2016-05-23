@@ -1,0 +1,70 @@
+﻿@using Clinic.BackEnd.Models
+@model Clinic.BackEnd.Models.Sampling
+
+@using (Html.BeginForm())
+{
+    <div class="modal-dialog " style="margin: 0px" >
+        <div class="form-horizontal" style="padding: 0px">
+
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Appointment_Id)
+            <div class="modal-body " >
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BarCode, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.BarCode)
+                        @Html.ValidationMessageFor(model => model.BarCode)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Iteration, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Iteration)
+                        @Html.ValidationMessageFor(model => model.Iteration)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Location, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Location)
+                        @Html.ValidationMessageFor(model => model.Location)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comment, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Comment)
+                        @Html.ValidationMessageFor(model => model.Comment)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SamplingType.Name, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.SamplingType_Id, (IEnumerable<SelectListItem>)ViewBag.SamplingTypes, String.Empty, new { @class = "chosen" })
+                        @Html.ValidationMessageFor(model => model.SamplingType_Id)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SamplingStatu.Name, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.SamplingStatus_Id, (IEnumerable<SelectListItem>)ViewBag.SamplingStatuses, String.Empty, new { @class = "chosen" })
+                        @Html.ValidationMessageFor(model => model.SamplingStatus_Id)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="btn-toolbar pull-right">
+                        <input type="button" id="btnCancelSampling" value=@Languages.Global.Cancel class="btn btn-danger" />
+                        <input type="button" id="btnSaveSampling" value=@Languages.Global.Save class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

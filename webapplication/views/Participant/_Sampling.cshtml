@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<Clinic.BackEnd.Models.Sampling>
+
+
+<div class="grid-wrap">
+    <table class="table table-striped grid-table">
+        <thead style="background :silver">
+            <tr>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.Appointment.Date)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.SamplingType.Name)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.Comment)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.SamplingStatu.Name)
+                    </div>
+                </th>
+                <th class="grid-header">
+        
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="grid-cell">
+                        @Html.DisplayFor(modelItem => item.Appointment.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SamplingType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SamplingStatu.Name)
+                    </td>
+
+                    <td>
+                        <input type="button" title="edit" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "Sampling", new { ID = item.Id })' ;" class="btn btn-info btn-xs pull-right" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

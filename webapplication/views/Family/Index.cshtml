@@ -1,0 +1,41 @@
+﻿@using GridMvc.Html
+@model IEnumerable<Clinic.BackEnd.Models.Family>
+
+
+
+
+@section header {
+    <h1>@Html.Label(Languages.Global.Family)</h1>
+}
+
+
+<hr />
+
+<p style="text-align: right">
+
+    <input type="button" title="create" value='@Languages.Global.Add' onclick="location.href='@Url.Action("create", "Sampling")' ;" class="btn btn-info pull-Right" />
+</p>
+@helper RenderActionColumn(int id)
+{
+    <div class="pull-right">
+
+        <input type="button" title="edit" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "Sampling", new { ID = id })' ;" class="btn btn-info" />
+
+    </div>
+}
+
+<div>
+    @Html.Grid(Model).Columns(columns =>
+    {
+
+        columns.Add(c => c.Id).Filterable(true).Titled(Html.DisplayNameFor(x => x.Id).ToString()).SetWidth(10);
+        columns.Add(c => c.Name).Filterable(true).Titled(Html.DisplayNameFor(x => x.Name).ToString()).SetWidth(10);
+        columns.Add(c => c.Participant_Id).Titled(Html.DisplayNameFor(x => x.Participant_Id).ToString()).Filterable(true).SetWidth(10);
+        columns.Add(c => c.Participant.FullName).Titled(Html.DisplayNameFor(x => x.Participant.FullName).ToString()).Filterable(true).SetWidth(10);
+        columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+
+    }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+
+</div>
+
+

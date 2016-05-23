@@ -1,0 +1,357 @@
+﻿
+@using Clinic.BackEnd.Models
+@model Clinic.BackEnd.Models.Sampling
+
+
+
+@{
+    var sampling = new Clinic.BackEnd.Models.Sampling();
+    ViewBag.Title = "Index";
+}
+
+
+@section header {
+    <h3>@Html.Label(Languages.Global.Sampling) - @Html.DisplayFor(model => model.Appointment.Participant_Id)</h3>
+}
+
+<br />
+<br />
+
+<div class="nav nav-tabs" id="tabs">
+    <ul>
+        <li><a href="#tabs-1">@Languages.Global.Sampling</a></li>
+        <li><a href="#tabs-2">@Languages.Global.LabResult</a></li>
+    </ul>
+    <div id="tabs-1">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Appointment_Id)
+
+
+                <div class=" Row">
+                    <div class="Container">
+                        <div class="col-xs-6">
+                            <div class=" panel panel-default">
+                                <div class="panel-heading">
+                                    @Languages.Global.Identification
+                                </div>
+                                <div style="padding-left:  5px ">
+
+                                    <div class="form-group" style="padding-top: 5px">
+                                        @Html.LabelFor(model => model.Appointment.Participant.Id, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8" style="padding-top: 5px ">
+                                            @Html.DisplayFor(model => model.Appointment.Participant_Id)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="padding-top: 5px">
+                                        @Html.LabelFor(model => model.Appointment.Participant.Family_Id, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8" style="padding-top: 5px ">
+                                            @Html.DisplayFor(model => model.Appointment.Participant.Family_Id)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Appointment.Date, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8" style="padding-top: 5px">
+                                            @Html.DisplayFor(model => model.Appointment.Date)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SamplingType.Name, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-5">
+                                            @Html.DropDownList("SamplingType_Id", String.Empty)
+                                            @Html.ValidationMessageFor(model => model.SamplingType_Id)
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <input type="button" id="btnBloodFractionation" value='Fraction' class="btn btn-success" />
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Iteration, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.Iteration)
+                                            @Html.ValidationMessageFor(model => model.Iteration)
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <input type="button" id="btnCreateIteration" value='iteration' class="btn btn-success" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Container">
+                        <div class="col-xs-6">
+                            <div class=" panel panel-default">
+                                <div class="panel-heading">
+                                    @Languages.Global.Detail
+                                </div>
+                                <div style="padding-left:  5px ">
+                                    <div class="form-group" style="padding-top: 5px">
+                                        @Html.LabelFor(model => model.SamplingStatu.Name, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.DropDownList("SamplingStatus_Id", String.Empty)
+                                            @Html.ValidationMessageFor(model => model.SamplingStatus_Id)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.BarCode, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.BarCode)
+                                            @Html.ValidationMessageFor(model => model.BarCode)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Location, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Location)
+                                            @Html.ValidationMessageFor(model => model.Location)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Container">
+                    <div class="col-xs-12">
+                        <div class=" panel panel-default">
+                            <div class="panel-heading">
+                                @Html.LabelFor(model => model.Comment)
+                            </div>
+                            <div>
+                                @Html.TextAreaFor(model => model.Comment, new { @class = "Fullwide", rows = 5 })
+                                @Html.ValidationMessageFor(model => model.Comment)
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-toolbar pull-right ">
+                    <div>
+                        <a href="@Url.Content("~/Sampling")" class="btn btn-danger  "><span style="color:white;">@Languages.Global.Cancel </span></a>
+                        
+                        @if (((List<string>)Session["UserRoles"]).Contains("Researcher") || ((List<string>)Session["UserRoles"]).Contains("Associate"))
+                        {
+                            <input type="submit" value="@Languages.Global.Save" class="btn btn-success" />
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    <div id="tabs-2">
+        <div class="row">
+            <div class="col-md-10" id="replacetarget" style="width: 100%">
+                @{ Html.RenderAction("Index", "Result", new { id = Model.Id }); }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divGenerateSampling" title='Generate Sampling' class="row" style="width:1280px;">
+    <div class="col-lg-12">
+        @*<div class="panel panel-default">
+            <div class="panel-heading">
+                Basic Form Elements
+            </div>
+            <div class="panel-body">*@
+        <div class="row">
+            <div class="col-lg-4">
+                <label>Starting Bar Code</label>
+            </div>
+            <div class="col-lg-8">
+                <input type="text" id="txtStartingBarCode" class="form-control" />
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="btn-toolbar pull-right">
+                <input type="button" id="btnCancel" value=@Languages.Global.Cancel class="btn btn-danger" />
+                <input type="button" id="btnGenerateSampling" value='Generate' class="btn btn-success" />
+
+            </div>
+        </div>
+
+    </div>
+    @*</div>
+        </div>*@
+
+</div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                ...
+            </div>
+            <div class="modal-body">
+                test
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+
+            <script>
+                $(document).ready(function () {
+                    $("#divGenerateSampling").dialog({
+                        autoOpen: false,
+                        width: 'auto',
+                        height: 'auto',
+                        position: {
+                            my: 'center',
+                            at: 'center',
+                            of: window
+                        }
+
+                    }); 
+                    //$("#divGenerateSampling").dialog({
+                    //    autoOpen: false,
+                    //    width: 'auto',
+                    //    height: 'auto',
+                    //    position: {
+                    //        my: 'center',
+                    //        at: 'center',
+                    //        of: window
+                    //    }
+
+                    //});
+                    $("#SamplingStatus_Id").chosen({
+                        no_results_text: "@Languages.Global.Select",
+                        width: "50%",
+                        disable_search: true,
+                        placeholder_text_single:"test"
+                    });
+                    $("#SamplingType_Id").chosen({
+                        no_results_text: "@Languages.Global.Select",
+                        width: "50%",
+                        disable_search: true
+                    });
+                    $("#tabs").tabs();
+                    $("#btnCreateIteration").click(function () {
+                        if (confirm("Do you want to createIteration ?"))
+                        {
+                            $.ajax({
+                                url: '@Url.Action("CreateIteration", "Sampling")',
+                                type: 'POST',
+                                data: JSON.stringify({ 'id': @Model.Id }),
+                                dataType: 'json',
+                                contentType: 'application/json; charset=utf-8',
+                                success: function (data) {
+                                    alert(data);
+                                },
+                                error: function () {
+                                    alert("error");
+                                }
+                            });
+                        }
+                        return false;
+                    });
+
+                    $("#btnBloodFractionation").click(function () {
+                        $('#txtStartingBarCode').val('');
+                        $("#divGenerateSampling").dialog("open");
+                    });
+
+                    $("#btnGenerateSampling").click(function () {
+                        var barCode = $('#txtStartingBarCode').val();
+                        if($.isNumeric(barCode))
+                        {
+                            $.ajax({
+                                url: '@Url.Action("GenerateSampling", "Sampling")',
+                                type: 'POST',
+                                data: JSON.stringify({ 'id': @Model.Id, 'barCode' : barCode }),
+                                dataType: 'json',
+                                contentType: 'application/json; charset=utf-8',
+                                success: function (data) {
+                                    alert(data);
+                                },
+                                error: function () {
+                                    alert("error");
+                                }
+                            });
+                            $("#divGenerateSampling").dialog("close");
+                        }
+                        else
+                        {
+                            alert('Please enter a valid numeric to proceed.');
+                        }
+                    });
+
+                    $("#btnCancel").click(function () {
+                        $("#divGenerateSampling").dialog("close");
+                    });
+                });
+            </script>
+        }
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        $(document).on("click", "a.dialog-link", function (e) {
+            $("#dialog").load(this.href, function () {
+                $("#dialog").dialog({
+                    height: 'auto',
+                    width: 'auto',
+                    buttons: {
+                        "@Languages.Global.Save": function () {
+                            $("#dialog").find("form").trigger("submit");
+                        },
+                        "@Languages.Global.Cancel": function () {
+                            $("#dialog").dialog("close");
+                        }
+                    }
+                });
+            });
+            return false;
+        });
+
+
+        $(document).on("submit", "#dialog>form", function () {
+            var $this = $(this);
+            $.ajax({
+                url: $this.attr("action"),
+                type: $this.attr("method"),
+                data: $this.serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $("#dialog").dialog("close");
+                        $('#replacetarget').html(result.html); //  Load data from the server and place the returned HTML into the matched element
+
+                    }
+                    else {
+                        $('#myModalContent').html(result);
+                    }
+                }
+            });
+            return false;
+
+        });
+    });
+</script>
+
+<div id="dialog" style="display:none;" title="Result">
+</div>

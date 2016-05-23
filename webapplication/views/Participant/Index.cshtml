@@ -1,0 +1,78 @@
+﻿@using GridMvc.Html
+@using Clinic.BackEnd.Models
+@model IEnumerable<Clinic.BackEnd.Models.Participant>
+
+<!DOCTYPE html>
+
+@section header {
+    <h1>@Html.Label(Languages.Global.Participant)</h1>
+}
+<html>
+
+
+    <body>
+        
+        <br>
+        <br>
+@if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
+                     {
+                         <input type="button" title="create" value='@Languages.Global.Add' onclick="location.href='@Url.Action("create", "Participant")' ;" class="btn btn-primary pull-right " />
+                     }
+        <br>
+        <br>
+
+
+            @helper RenderActionColumn(int id)
+                {
+                    <input type="button" title="create" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "Participant", new { ID = id })' ;" class="btn btn-info pull-right" />
+}
+
+
+
+            @if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
+            {
+                @Html.Grid(Model).Columns(columns =>
+            {
+
+                columns.Add(c => c.Id).Titled(Html.DisplayNameFor(x => x.Id).ToString()).Filterable(true);
+                columns.Add(c => c.FullName).Titled(Html.DisplayNameFor(x => x.FullName).ToString()).Filterable(true);
+                columns.Add(c => c.Family_Id).Titled(Html.DisplayNameFor(x => x.Family.Id).ToString()).Filterable(true);
+                columns.Add(c => c.City.Name).Titled(Html.DisplayNameFor(x => x.City.Name).ToString()).Filterable(true);
+                columns.Add(c => c.DOB).Titled(Html.DisplayNameFor(x => x.DOB).ToString()).Filterable(true).Format("{0:yyyy/mm/dd}");
+                columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+
+            }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+            }
+
+            else
+            {
+                @Html.Grid(Model).Columns(columns =>
+            {
+
+                columns.Add(c => c.Id).Titled(Html.DisplayNameFor(x => x.Id).ToString()).Filterable(true);
+                columns.Add(c => c.Family_Id).Titled(Html.DisplayNameFor(x => x.Family.Id).ToString()).Filterable(true);
+                columns.Add(c => c.City.Name).Titled(Html.DisplayNameFor(x => x.City.Name).ToString()).Filterable(true);
+                columns.Add(c => c.DOB).Titled(Html.DisplayNameFor(x => x.DOB).ToString()).Filterable(true).Format("{0:yyyy/MM/dd}");
+                columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+
+            }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+            }
+
+            <div>
+                
+
+                @section scripts
+                {
+                 
+                }
+            </div>
+</body>
+</html>
+
+
+
+
+
+                   
+
+      

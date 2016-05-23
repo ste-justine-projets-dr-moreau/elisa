@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Scholios</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/chosen.css" rel="stylesheet" />
+</head>
+
+
+    <body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top pull-right ">
+        <div id="Left" style="float: left; width: 50%; padding: 0px  0px 0px 20px">
+            <table>
+                <tr>
+                    <td>
+                        <div style=" padding-top: 7px">
+                            @*<img id="img_logo" alt="Logo" src="@Url.Content("~/Content/Images/logo.jpg")" />*@
+                        </div>
+                    </td>
+                    <td>
+                        <div style="color: white ; padding-left: 20px">
+                            @RenderSection("header", required: false)
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="Right" style="float: Right; width: 50% ; padding-top: 10px">
+            <div class="container">
+                <nav style="margin-top:10px;">
+                    <ul>
+                        <li>
+                            <a>
+                                @Languages.Global.Clinic
+                            </a>
+                            <ul>
+                                <li>@Html.ActionLink(Languages.Global.Participant, "Index", "Participant")</li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                @Languages.Global.Laboratory
+                            </a>
+                            <ul>
+                                <li>
+                                    @Html.ActionLink(Languages.Global.Sampling, "Index", "Sampling")
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                @Languages.Global.Report
+                            </a>
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Elisa2", "ExportCSV", "Report")
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            @*@Html.ActionLink(Languages.Global.Participant, "Index", "Participant")*@
+                            @Html.ActionLink("Analytique", "Index", "Analytique")
+                        </li>
+
+                        <li>
+                            <a>
+                                @Languages.Global.Administration
+                            </a>
+                            <ul>
+                                <li>
+                                    <a> @Languages.Global.ApplicationData</a>
+                                    <ul>
+                                        
+                                        <li>@Html.ActionLink(Languages.Global.CobbCondition, "Index", "CobbCondition")</li>
+                                        <li>@Html.ActionLink(Languages.Global.Diagnoses, "Index", "Diagnosis")</li>
+                                        <li>@Html.ActionLink(Languages.Global.Drug, "Index", "Drug")</li>
+                                        <li>@Html.ActionLink(Languages.Global.LabTest, "Index", "LabTest")</li>
+                                        <li>@Html.ActionLink(Languages.Global.SamplingStatus, "Index", "SamplingStatus")</li>
+                                        <li>@Html.ActionLink(Languages.Global.Group, "Index", "Group")</li>
+                                        <li>@Html.ActionLink(Languages.Global.EthnicGroup, "Index", "EthnicGroup")</li>
+                                        <li>@Html.ActionLink(Languages.Global.FamilyRole, "Index", "FamilyRole")</li>
+                                        <li>@Html.ActionLink(Languages.Global.SamplingType, "Index", "SamplingType")</li>
+                                        <li>@Html.ActionLink(Languages.Global.SurgeryType, "Index", "SurgeryType")</li>
+                                        <li>@Html.ActionLink(Languages.Global.CobbType, "Index", "CobbType")</li>
+                                        <li>@Html.ActionLink(Languages.Global.CorsetType, "Index", "CorsetType")</li>
+                                       
+                                        <li>@Html.ActionLink(Languages.Global.City, "Index", "City")</li>
+
+
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink(Languages.Global.User, "Index", "User")</li>
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            @if (!string.IsNullOrEmpty(Session["Language"].ToString()))
+                            {
+                                if (Session["Language"].ToString().ToLower() == "fr")
+                                {
+                                    <a href="@Url.Content("~/CultureManager/ChangeCulture?lang=en&returnUrl="+Request.RawUrl)">English</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Content("~/CultureManager/ChangeCulture?lang=fr&returnUrl=" + Request.RawUrl)">Français</a>
+                                }
+                            }
+                        </li>
+                    </ul>
+
+                </nav>
+
+            </div>
+            <div style="float:right;color: #ffffff;margin-right:5px;">
+
+                @(User.Identity.Name.Contains(@"\") ? User.Identity.Name.ToLower().Substring(User.Identity.Name.LastIndexOf(@"\") + 1) : User.Identity.Name)
+            </div>
+        </div>
+    </div>
+        
+
+
+        <div class="container body-content">
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/dc")@**@
+
+        @RenderSection("scripts", required: false)
+        <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>        
+        <script src="~/Scripts/gridmvc.js"></script>
+        <script src="~/Scripts/chosen.jquery.js"></script>
+        @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+        @if (Session["Language"].ToString() == "fr")
+        {
+            <script src="~/Scripts/jquery.ui.datepicker-fr-CA.js"></script>
+        }
+
+        <script>
+            $(document).ready(function () {
+                $(".datePicker").datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-50:+5"
+                });
+            });
+        </script>
+
+ 
+        @*<script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>*@
+
+        @RenderBody()
+
+    </div>
+       
+    </body>
+</html>

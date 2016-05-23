@@ -1,0 +1,123 @@
+﻿@model Clinic.BackEnd.Models.User
+
+@*@{
+    ViewBag.Title = "Edit";
+}*@
+
+<link href="~/Content/chosen.css" rel="stylesheet" />
+
+@section header {
+    <h1>@Html.Label(Languages.Global.User) - @Html.Label(Languages.Global.Add)</h1>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br>
+    <br>
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NT, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.NT)
+                @Html.ValidationMessageFor(model => model.NT)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Language.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.DropDownList("Language_Id", String.Empty)
+                @Html.ValidationMessageFor(model => model.Language.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hospital.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.DropDownList("Hospital_Id", String.Empty)
+                @Html.ValidationMessageFor(model => model.Hospital_Id)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Roles, "Roles", new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.ListBox("RolesForUser", (List<SelectListItem>)ViewBag.Roles, String.Empty)
+                @Html.ValidationMessageFor(model => model.Roles)
+            </div>
+        </div>
+        
+  
+        <div class="btn-toolbar pull-right">
+            <div>
+                <input type="button" title="Index" value='@Languages.Global.Cancel' onclick="location.href='@Url.Action("Index", "User")' ;" class="btn btn-danger" />
+
+
+                @if (((List<string>)Session["UserRoles"]).Contains("Administrator"))
+                {
+                    <input type="submit" value="@Languages.Global.Save" class="btn btn-success" />
+                }
+
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/chosen.jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#RolesForUser").chosen({
+                no_results_text: "Oops, nothing found!",
+                width: "50%"
+            });
+            $("#Hospital_Id").chosen({
+                no_results_text: "Oops, nothing found!",
+                width: "50%"
+            });
+            $("#Language_Id").chosen({
+                no_results_text: "Oops, nothing found!",
+                width: "50%"
+            });
+        });
+    </script>
+}

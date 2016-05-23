@@ -1,0 +1,371 @@
+﻿@using Clinic.BackEnd.Models
+@using WebGrease.Css.Extensions
+@model Clinic.BackEnd.Models.Appointment
+
+@{
+    ViewBag.Title = @Languages.Global.Edit;
+}
+
+@section header {
+    <h3>@Languages.Global.CreateAppointment  </h3>
+}
+
+
+<br />
+<br />
+<div class="nav nav-tabs" id="tabs">
+    <ul>
+        <li><a href="#tabs-1">@Languages.Global.Appointment</a></li>
+        <li><a href="#tabs-2">@Languages.Global.Sampling</a></li>
+
+    </ul>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false)
+
+
+        <div id="tabs-1">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.User_Id)
+                @Html.HiddenFor(model => model.Participant_Id)
+                <div class="row">
+                    <div class="container">
+                        <div class="col-xs-6">
+                            <div class=" panel panel-default">
+                                <div class="panel-heading">
+                                    @Languages.Global.GeneralInfo
+                                </div>
+                                <br />
+                                <div style="padding-left: 5px">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Date)
+                                            @Html.ValidationMessageFor(model => model.Date)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Height, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Height) (cm)
+                                            @Html.ValidationMessageFor(model => model.Height)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Weight) (kg)
+                                            @Html.ValidationMessageFor(model => model.Weight)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsPain, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+
+                                            @Html.RadioButtonFor(model => model.IsPain, true)
+                                            @Html.Label(Languages.Global.Yes)
+                                            @Html.RadioButtonFor(model => model.IsPain, false)
+                                            @Html.Label(Languages.Global.No)
+                                            @Html.ValidationMessageFor(model => model.IsPain)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Anovulant, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+
+                                            @Html.RadioButtonFor(model => model.Anovulant, true)
+                                            @Html.Label(Languages.Global.Yes)
+                                            @Html.RadioButtonFor(model => model.Anovulant, false)
+                                            @Html.Label(Languages.Global.No)
+                                            @Html.ValidationMessageFor(model => model.Anovulant)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsSmoker, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+
+                                            @Html.RadioButtonFor(model => model.IsSmoker, true)
+                                            @Html.Label(Languages.Global.Yes)
+                                            @Html.RadioButtonFor(model => model.IsSmoker, false)
+                                            @Html.Label(Languages.Global.No)
+                                            @Html.ValidationMessageFor(model => model.IsSmoker)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SmokePerDay, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.SmokePerDay)
+                                            @Html.ValidationMessageFor(model => model.SmokePerDay)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Risser, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Risser)
+                                            @Html.ValidationMessageFor(model => model.Risser)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" style="width: 47%">
+                            <div class=" panel panel-default">
+                                <div class="panel-heading">
+                                    COBB
+                                </div>
+                                <br />
+                                <div class=" form-group">
+                                    @Html.LabelFor(model => model.CobbConditions, new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.ListBox("CobbConditionsForCobb", (List<SelectListItem>)ViewBag.CobbCondition, String.Empty)
+                                        @Html.ValidationMessageFor(model => model.CobbConditions)
+                                    </div>
+                                </div>
+                                <div class="grid-wrap">
+                                    <fieldset>
+                                        <table class="table table-striped grid-table" id="cobbEditor">
+                                            <thead style="background: silver">
+                                                <tr>
+                                                    <th class="grid-header">
+                                                        <div class="grid-header-title">
+                                                            Type
+                                                        </div>
+                                                    </th>
+                                                    <th class="grid-header">
+                                                        <div class="grid-header-title">
+                                                            Angle
+                                                        </div>
+                                                    </th>
+                                                    <th class="grid-header">
+                                                        <div class="grid-header-title">
+                                                            Direction
+                                                        </div>
+                                                    </th>
+                                                    <th class="grid-header">
+                                                        <div class="col-xs-2">
+                                                            <a id="addAnotherCobb" href="#" class="glyphicon glyphicon-plus" style="color: green"></a>
+                                                        </div>
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var cobb in Model.Cobbs)
+                                                {
+                                                    Html.RenderPartial("_CobbEntryEditor", cobb);
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            @Html.LabelFor(model => model.Comment)
+                        </div>
+                        <div>
+                            @Html.TextAreaFor(model => model.Comment, new { @class = "Fullwide", rows = 5 })
+                            @Html.ValidationMessageFor(model => model.Comment)
+                        </div>
+
+                    </div>
+                </div>
+                <div class="btn-toolbar pull-right ">
+                    <div>
+                        <a href="@Url.Content("~/Participant/Edit/" + Model.Participant_Id + "#tabs-2")" class="btn btn-danger  "><span>@Languages.Global.Cancel </span></a>
+                        @if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
+                        {
+                            <input type="submit" value="@Languages.Global.Save" class="btn btn-success" />
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div id="tabs-2">
+            <div class="col-xs-12">
+
+                <div id="addSamplingDialog" style="display: none;" title="@Languages.Global.AddEdit">
+                    @Html.Partial("_CreateOrEditSampling", new Sampling { Appointment_Id = Model.Id })
+                </div>
+
+                <div id="confirmDeleteSamplingDialog" style="display: none;">
+                    @Html.Partial("_CreateOrEditSampling", new Sampling { Appointment_Id = Model.Id })
+                </div>
+                <div id="listSampling">
+                    @Html.Partial("_ListSamplings", Model)
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#testingThisSelect").chosen();
+            $("#tabs").tabs();
+            $("#CobbConditionsForCobb").chosen({
+                placeholder_text_multiple: "@Languages.Global.SomeOptions",
+                width: "50%"
+            });
+            //Sampling
+            $("#addSamplingDialog").dialog({
+                autoOpen: false,
+                height: 'auto',
+                width: 'auto'
+            });
+            $("#confirmDeleteSamplingDialog").dialog({
+                autoOpen: false,
+                height: 'auto',
+                width: 'auto'
+            });
+
+            $(document).on("click", "#btnCancelSampling", function () {
+                $("#addSamplingDialog").dialog("close");
+            });
+            $(document).on("click", "#btnCancelDeleteSampling", function () {
+                $("#confirmDeleteSamplingDialog").dialog("close");
+            });
+
+            $(document).on("click", "#btnSaveSampling", function () {
+                var $self = this;
+                $.ajax({
+                    url: "@Url.Content("~/Appointment/CreateOrEditSampling")",
+                    type: 'POST',
+                    data: $($self.closest("form")).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            $("#addSamplingDialog").dialog("close");
+                            $("#listSampling").html(data.html);
+
+
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                });
+            });
+
+            $(document).on("click", "#btnConfirmDeleteSampling", function () {
+                var $self = this;
+                $.ajax({
+                    url: "@Url.Content("~/Appointment/DeleteSampling")",
+                    type: 'POST',
+                    data: { samplingId: $("#SamplingIdToDelete").val() },
+                    success: function (data) {
+                        if (data.success) {
+                            $("#confirmDeleteSamplingDialog").dialog("close");
+                            $("#listSampling").html(data.html);
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                });
+            });
+            $(document).on("click", ".editSamplingDialogButton", function () {
+                var $self = $(this);
+                $.ajax({
+                    url: "@Url.Content("~/Appointment/GetSampling")",
+                    data: { samplingId: $self.attr("data-sampling-id") },
+                    success: function (data) {
+                        $("#addSamplingDialog").html(data);
+                        $("#addSamplingDialog").dialog("open");
+                        $(".chosen").chosen();
+                    }
+                });
+            });
+
+            $(document).on("click", ".confirmDeleteSamplingDialogButton", function () {
+                var $self = $(this);
+                $.ajax({
+                    url: "@Url.Content("~/Appointment/GetSamplingForDeletion")",
+                    data: { samplingId: $self.attr("data-sampling-id") },
+                    success: function (data) {
+                        $("#confirmDeleteSamplingDialog").html(data);
+                        $("#confirmDeleteSamplingDialog").dialog("open");
+                    }
+                });
+            });
+
+            $(document).on("click", "#addSamplingDialogButton", function () {
+                $.ajax({
+                    url: "@Url.Content("~/Appointment/GetNewSampling")",
+                    data: { appointmentId: $("#Id").val() },
+                    success: function (data) {
+                        $("#addSamplingDialog").html(data);
+                        $("#addSamplingDialog").dialog("open");
+                        $(".chosen").chosen({
+                            no_results_text: "@Languages.Global.Select",
+                            width: "50%",
+                            disable_search: true,
+                            placeholder_text_single: "test"
+                        });
+                    }
+                });
+            });
+
+
+
+
+            //Cobb
+            $(".chosen").chosen({
+                no_results_text: "@Languages.Global.Select",
+                disable_search: true,
+                placeholder_text_single: "test"
+            });
+            //$("#samplingEditor").sortable();
+            $("#addAnother").click(function () {
+                $.ajax({
+                    url: '/Appointment/SamplingEntryRow',
+                    data: { appointmentId: $("#Id").val() },
+                    success: function (data) {
+                        $("#samplingEditor > tbody").append(data);
+                    },
+                });
+            });
+
+
+            //$("#cobbEditor").sortable();
+            $("#addAnotherCobb").click(function () {
+                if ($("#cobbEditor > tbody > tr").length < 4) {
+                    $.ajax({
+                        url: '/Appointment/CobbEntryRow',
+                        data: { appointmentId: $("#Id").val() },
+                        success: function (data) {
+                            $("#cobbEditor > tbody").append(data);
+                            $("#cobbEditor > tbody select.chosen").chosen();
+
+                        }
+                    });
+                }
+            });
+
+            $("#CobbType_Id").chosen({
+                no_results_text: "@Languages.Global.Select",
+                width: "50%",
+                disable_search: true,
+                placeholder_text_single: "test"
+            });
+        });
+
+    </script>
+}
+
+

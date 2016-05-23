@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+<div class="container">
+    
+    <div class="row">
+        <h2>Analytique</h2>
+
+        <div id="chart-ring-year"></div>
+        <div id="chart-line-hitsperday"></div>
+    </div>
+
+
+    <div class="row">
+        Sélectionner une source de donnée :
+        <select id="lst-datasource">
+            <option value="1">Example</option>
+            <option value="2">Cobb</option>
+            <option value="3">Participant</option>
+        </select>
+    </div>
+    <div class="row">
+        Sélectionner une type de représentation :
+        <select id="lst-chart-type">
+            <option value="1">Ligne</option>
+            <option value="2">Pie chart</option>
+            <option value="3">Bar chart</option>
+        </select>
+    </div>
+    <div class="row">
+        
+        Sélectionner une dimension :
+        <select id="lst-dimension"></select>
+        <button id="btn-add-dimension">Ajouter</button>
+
+    </div>
+    <div class="row">
+
+        Sélectionner une proprieté à étudier de la dimension :
+        <select id="lst-properties"></select>
+        <button id="btn-add-propertie">Ajouter</button>
+
+    </div>
+    <div class="row">
+        <button id="btn-generate-chart">Generate chart</button>
+    </div>
+    <div class="row">
+        <div id="dynamic-chart"></div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        /*
+        var data = [
+		    { date: "12/27/2012", http_404: 2, http_200: 190, http_302: 100 },
+		    { date: "12/28/2012", http_404: 2, http_200: 10, http_302: 100 },
+		    { date: "12/29/2012", http_404: 1, http_200: 300, http_302: 200 },
+		    { date: "12/30/2012", http_404: 2, http_200: 90, http_302: 0 },
+		    { date: "12/31/2012", http_404: 2, http_200: 90, http_302: 0 },
+		    { date: "01/01/2013", http_404: 2, http_200: 90, http_302: 0 },
+		    { date: "01/02/2013", http_404: 1, http_200: 10, http_302: 1 },
+		    { date: "01/03/2013", http_404: 2, http_200: 90, http_302: 0 },
+		    { date: "01/04/2013", http_404: 2, http_200: 90, http_302: 0 },
+		    { date: "01/05/2013", http_404: 2, http_200: 90, http_302: 0 },
+		    { date: "01/06/2013", http_404: 2, http_200: 200, http_302: 1 },
+		    { date: "01/07/2013", http_404: 1, http_200: 200, http_302: 100 }
+        ];
+        var ndx = crossfilter(data);
+
+
+        // Pre-traitement des donnees
+        var parseDate = d3.time.format("%m/%d/%Y").parse;
+
+        data.forEach(function (d) {
+            d.date = parseDate(d.date);
+            d.total = d.http_404 + d.http_200 + d.http_302;
+            d.Year = d.date.getFullYear();
+        });
+
+
+        // Création des dimensions
+        var dateDim = ndx.dimension(function (d) { return d.date; });
+        var hits = dateDim.group().reduceSum(function (d) { return d.total; });
+
+        var minDate = dateDim.bottom(1)[0].date;
+        var maxDate = dateDim.top(1)[0].date;
+
+        var status_200 = dateDim.group().reduceSum(function (d) { return d.http_200; });
+        var status_302 = dateDim.group().reduceSum(function (d) { return d.http_302; });
+        var status_404 = dateDim.group().reduceSum(function (d) { return d.http_404; });
+
+
+        // Création du tableau
+        var hitslineChart = dc.lineChart("#chart-line-hitsperday");
+
+        hitslineChart
+            .width(500).height(200)
+            .dimension(dateDim)
+
+            //.group(hits)
+            .group(status_200, "200")
+            .stack(status_302, "302")
+            .stack(status_404, "404")
+            .renderArea(true)
+
+            .x(d3.time.scale().domain([minDate, maxDate]))
+            .brushOn(false)
+            .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
+            .yAxisLabel("Hits per day");
+
+
+
+        // Pie chart
+
+        var yearRingChart = dc.pieChart("#chart-ring-year");
+        var yearDim = ndx.dimension(function (d) { return d.Year; });
+        var year_total = yearDim.group().reduceSum(function (d) { return d.http_200 + d.http_302 + d.http_404; });
+
+        yearRingChart
+            .width(150).height(150)
+            .dimension(yearDim)
+            .group(year_total)
+            .innerRadius(30);
+
+        dc.renderAll();
+
+        */
+
+
+        // Prototype here
+
+        var data = [
+            { date: "12/27/2012", http_404: 2, http_200: 190, http_302: 100 },
+            { date: "12/28/2012", http_404: 2, http_200: 10, http_302: 100 },
+            { date: "12/29/2012", http_404: 1, http_200: 300, http_302: 200 },
+            { date: "12/30/2012", http_404: 2, http_200: 90, http_302: 0 },
+            { date: "12/31/2012", http_404: 2, http_200: 90, http_302: 0 },
+            { date: "01/01/2013", http_404: 2, http_200: 90, http_302: 0 },
+            { date: "01/02/2013", http_404: 1, http_200: 10, http_302: 1 },
+            { date: "01/03/2013", http_404: 2, http_200: 90, http_302: 0 },
+            { date: "01/04/2013", http_404: 2, http_200: 90, http_302: 0 },
+            { date: "01/05/2013", http_404: 2, http_200: 90, http_302: 0 },
+            { date: "01/06/2013", http_404: 2, http_200: 200, http_302: 1 },
+            { date: "01/07/2013", http_404: 1, http_200: 200, http_302: 100 }
+        ];
+
+        var ndx = crossfilter(data);
+
+        // Pre-traitement des donnees
+        //var parseDate = d3.time.format("%m/%d/%Y").parse;
+
+        /*data.forEach(function (d) {
+            d.date = parseDate(d.date);
+        });*/
+        
+
+        var datasource;
+        var dimensions = [];
+        var properties = [];
+        var dsItemProperties = Object.keys(data[0]);
+        var dimensionOptions = $("#lst-dimension");
+        var propertiesOptions = $("#lst-properties");
+
+        
+        $.each(dsItemProperties, function (index, value) {
+
+            var option = $("<option />").val(value).text(value);
+            dimensionOptions.append(option);
+            propertiesOptions.append(option.clone());
+
+        });
+
+        function setDatasource(ds) {
+
+            console.log("show me data !");
+            console.log(ds);
+            datasource = ds;
+
+            ndx = crossfilter(datasource);
+
+            // Populer les ddl dimension et propriete ...
+            var dsItemProperties = Object.keys(datasource[0]);
+
+            dimensionOptions.empty();
+            propertiesOptions.empty();
+
+            $.each(dsItemProperties, function (index, value) {
+
+                var option = $("<option />").val(value).text(value);
+                dimensionOptions.append(option);
+                propertiesOptions.append(option.clone());
+
+            });
+        }
+
+        $("#lst-datasource").on('change', function () {
+
+            var datasourceSelected = $(this).val();
+
+            switch (datasourceSelected) {
+                case "1":
+                    console.log("example...");
+                    setDatasource(data);
+                    break;
+                case "2":
+                    console.log("cobb...");
+                    $.getJSON("GetData2", function (data) {
+                        setDatasource(data);
+                    });
+                    break;
+                case "3":
+                    console.log("participant...");
+                    $.getJSON("GetData", function (data) {
+                        setDatasource(data);
+                    });
+                    break;
+                default:
+                    setDatasource(data);
+            }
+        });
+
+        $("#btn-add-dimension").click(function () {
+
+            var selectedDimension = dimensionOptions.val();
+            var dimension = ndx.dimension(function (d) { return d[selectedDimension]; });
+            dimensions.push(dimension);
+
+        });
+
+        $("#btn-add-propertie").click(function () {
+
+            var selectedDimension = dimensions[0]; //To modify
+            var selectedPropertie = propertiesOptions.val();
+
+            var propertie = selectedDimension
+                                .group()
+                                .reduceSum(function (d) {
+                                    console.log(selectedPropertie);
+                                    return d[selectedPropertie];
+                                });
+
+            properties.push(propertie);
+            console.log(properties);
+        });
+
+        $("#btn-generate-chart").click(function () {
+
+            var chartFunction = "";
+            var chartTypeValue = $("#lst-chart-type").val();
+
+            switch (chartTypeValue) {
+                case "1":
+                    chartFunction = "lineChart";
+                    break;
+                case "2":
+                    chartFunction = "pieChart";
+                    break;
+                case "3":
+                    chartFunction = "barChart";
+                default:
+
+            }
+
+            console.log("chartFunction");
+            console.log(chartFunction);
+
+
+            var dynamicChart = dc[chartFunction]("#dynamic-chart");
+
+            var minDate = dimensions[0].bottom(1)[0].date;
+            var maxDate = dimensions[0].top(1)[0].date;
+
+            dynamicChart
+                .width(500).height(200)
+
+                .dimension(dimensions[0])
+                .group(properties[0])
+
+                //.x(d3.time.scale().domain([minDate, maxDate])) // obligatoire
+            ;
+
+            if (chartTypeValue == "3") {
+
+                console.log("bar chart !!");
+
+                dynamicChart
+                    .x(d3.scale.ordinal())
+                    .xUnits(dc.units.ordinal);
+
+            }
+
+            if (chartTypeValue == "2") {
+                console.log("pie chart !!");
+
+                dynamicChart
+                    .innerRadius(30);
+            }
+
+            if (chartTypeValue == "1") {
+                console.log("line chart !!");
+
+                dynamicChart
+                    .x(d3.scale.ordinal())
+                    .xUnits(dc.units.ordinal);
+            }
+            
+            console.log(datasource);
+
+            dc.renderAll();
+        });
+
+
+
+    });
+
+</script>
+

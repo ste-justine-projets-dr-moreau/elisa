@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="Appointment" xml:space="preserve">
+    <value>Rendez-vous</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="Clinic" xml:space="preserve">
+    <value>Clinique
+</value>
+  </data>
+  <data name="CreateAppointment" xml:space="preserve">
+    <value>Créer un rendez-vous</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Détail</value>
+  </data>
+  <data name="Diagnoses" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="FamilyHistoric" xml:space="preserve">
+    <value>Historique Famillial</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Père</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Femme</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="Laboratory" xml:space="preserve">
+    <value>Laboratoire</value>
+  </data>
+  <data name="LabResult" xml:space="preserve">
+    <value>Résultat Laboratoire</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Homme</value>
+  </data>
+  <data name="MedicalFile" xml:space="preserve">
+    <value>Dossier Médical</value>
+  </data>
+  <data name="MedicalHistories" xml:space="preserve">
+    <value>Historique Médical</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>Mère</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nouveau</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="OneOption" xml:space="preserve">
+    <value>Choisir une Option</value>
+  </data>
+  <data name="Participant" xml:space="preserve">
+    <value>Participant</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Droite</value>
+  </data>
+  <data name="Sampling" xml:space="preserve">
+    <value>Prélèvement</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Choisir</value>
+  </data>
+  <data name="SomeOptions" xml:space="preserve">
+    <value>Choisir des Options</value>
+  </data>
+  <data name="StartsWith_" xml:space="preserve">
+    <value>Débute par</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Usager</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="Corset" xml:space="preserve">
+    <value>Corset</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>Information Générale</value>
+  </data>
+  <data name="BarCode" xml:space="preserve">
+    <value>Code Barre</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Remarque</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="SamplingType" xml:space="preserve">
+    <value>Type d'échantillon</value>
+  </data>
+  <data name="AddEdit" xml:space="preserve">
+    <value>Ajout/Modifier</value>
+  </data>
+  <data name="ApplicationData" xml:space="preserve">
+    <value>Données d'application</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Anglais</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Voulez-vous supprimer?</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Docteur</value>
+  </data>
+  <data name="Drug" xml:space="preserve">
+    <value>Médicament</value>
+  </data>
+  <data name="CobbCondition" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="CorsetType" xml:space="preserve">
+    <value>Type Corset</value>
+  </data>
+  <data name="CobbType" xml:space="preserve">
+    <value>Type COBB</value>
+  </data>
+  <data name="SurgeryType" xml:space="preserve">
+    <value>Type Chirurgie</value>
+  </data>
+  <data name="FamilyRole" xml:space="preserve">
+    <value>Rôle Famillial</value>
+  </data>
+  <data name="EthnicGroup" xml:space="preserve">
+    <value>Groupe Ethnique</value>
+  </data>
+  <data name="SamplingStatus" xml:space="preserve">
+    <value>État d'Échantillon</value>
+  </data>
+  <data name="LabTest" xml:space="preserve">
+    <value>Essaie Laboratoire</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>Famille</value>
+  </data>
+  <data name="AreYouSureYouWantToAddFamily" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir ajouter une famille à ce participant?</value>
+  </data>
+  <data name="ConfirmAddFamily" xml:space="preserve">
+    <value>Confirmation Ajout de Famille</value>
+  </data>
+  <data name="FamilyAlreadyExists" xml:space="preserve">
+    <value>Ce participant est déjà associé à une famille.</value>
+  </data>
+  <data name="FamilyNotCreated" xml:space="preserve">
+    <value>Une erreur s'est produite et la création de la famille a échoué.</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Rapport</value>
+  </data>
+</root>

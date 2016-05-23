@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Clinic.BackEnd.Models.Appointment>
+           
+
+<div class="grid-wrap">
+    <table class="table table-striped grid-table">
+        <thead style="background :silver">
+            <tr>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.Date)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.Height)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.Weight)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.User.FullName)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayNameFor(model => model.Comment)
+                    </div>
+                </th>
+
+                <th class="grid-header">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="grid-cell">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Height)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        <div class="btn-group-xm pull-right">
+                           <input type="button" title="edit" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "Appointment", new { ID = item.Id })' ;" class="btn btn-info btn-xs pull-right" />
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

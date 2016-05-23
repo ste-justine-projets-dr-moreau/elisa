@@ -1,0 +1,84 @@
+﻿@using GridMvc.Html
+@using WebApplication.Helpers
+@model IEnumerable<Clinic.BackEnd.Models.Result>
+
+
+
+<a href="@Url.Content("~/Result/Create?samplingId=")@ViewBag.SamplingId" class="btn btn-info  pull-right dialog-link"><span style="color:white">@Languages.Global.Add</span></a>
+<br/>
+<br />
+
+<div class="grid-wrap">
+     <table class="table table-striped grid-table">
+         <thead style="background :silver">
+             <tr style="text-align: center">
+                 <th class="grid-header">
+                     <div class="grid-header-title" style="color: #428bca">
+                         @Html.DisplayNameFor(model => model.Date)
+                     </div>
+                 </th>
+                 <th class="grid-header">
+                     <div class="grid-header-title" style="color: #428bca">
+                         @Html.DisplayNameFor(model => model.LabTest.Name)
+                     </div>
+                 </th>
+                 <th class="grid-header">
+                     <div class="grid-header-title" style="color: #428bca">
+                         @Html.DisplayNameFor(model => model.SubSample)
+                     </div>
+                 </th>
+                 <th class="grid-header">
+                     <div class="grid-header-title" style="color: #428bca">
+                         @Html.DisplayNameFor(model => model.Labresult)
+                     </div>
+                 </th>
+                 <th class="grid-header">
+                     <div class="grid-header-title" style="color: #428bca">
+                         @Html.DisplayNameFor(model => model.Comment)
+                     </div>
+                 </th>
+                 <th class="grid-header">
+
+                 </th>
+             </tr>
+         </thead>
+         <tbody>
+             @foreach (var item in Model)
+             {
+                <tr >
+                    <td class="grid-cell" style="vertical-align: middle">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td style="vertical-align: middle">
+                        @Html.DisplayFor(modelItem => item.LabTest.Name)
+                    </td>
+                    <td style="vertical-align: middle">
+                        @Html.DisplayFor(modelItem => item.SubSample)
+                    </td>      
+                    <td style="vertical-align: middle">
+                        @Html.DisplayFor(modelItem => item.Labresult)
+                    </td>                   
+                    <td style="vertical-align: middle">
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+
+                    <td>
+
+                        <a href="@Url.Content("~/Result/Edit/"+item.Id)" class="btn btn-info pull-right dialog-link"><span style="color:white">@Languages.Global.Edit</span></a>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+             }
+         </tbody>
+     </table>
+</div>
+
+    <!-- modal placeholder-->
+
+
+
+
+

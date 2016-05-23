@@ -1,0 +1,395 @@
+﻿@using System.Web.UI.WebControls
+@model Clinic.BackEnd.Models.Participant
+
+@{
+    ViewBag.Title = "Create" ;
+}
+<link href="~/Content/chosen.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@section header {
+    <h1>@Html.Label(Languages.Global.Participant) - @Languages.Global.New</h1>
+}
+
+@using (Html.BeginForm())
+
+{
+    <br/>
+    <br />
+    
+  @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+       
+        
+
+        <div class=" Row">
+            <div class="Container">
+                <div class="col-xs-6">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            @Languages.Global.Identification
+                        </div>
+                        <div style="padding-left:  5px ">
+                            <div class="form-group " style="padding-top: 10px">
+                                @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FirstName)
+                                    @Html.ValidationMessageFor(model => model.FirstName)
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.LastName)
+                                    @Html.ValidationMessageFor(model => model.LastName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StreetAdress, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StreetAdress)
+                                    @Html.ValidationMessageFor(model => model.StreetAdress)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.City.Name, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("City_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.City_Id)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Telephone, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Telephone)
+                                    @Html.ValidationMessageFor(model => model.Telephone)
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                @Html.LabelFor(model => model.DOB, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.DOB)
+                                    @Html.ValidationMessageFor(model => model.DOB)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsMale, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+
+                                    @Html.RadioButtonFor(model => model.IsMale, true)
+                                    @Html.Label(Languages.Global.Male)
+                                    @Html.RadioButtonFor(model => model.IsMale, false)
+                                    @Html.Label(Languages.Global.Female)
+                                    @Html.ValidationMessageFor(model => model.IsMale)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EthnicGroup.Name, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("EthnicGroup_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.EthnicGroup_Id)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Family.Name, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("Family_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.Family_Id)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FamilyRole.Name, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("FamilyRole_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.FamilyRole_Id)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Doctor_Id, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("Doctor_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.Doctor_Id)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Container">
+                <div class="col-xs-6">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            
+                            @Languages.Global.MedicalFile
+                        </div>
+                        <br />
+                        <div style="padding-left:  5px ">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Group.Name, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("Group_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.Group_Id)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MCH, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.MCH)
+                                    @Html.ValidationMessageFor(model => model.MCH)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HSJ, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.HSJ)
+                                    @Html.ValidationMessageFor(model => model.HSJ)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CHS, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.CHS)
+                                    @Html.ValidationMessageFor(model => model.CHS)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsConsent, new { @class = "control-label col-md-6" })
+                                <div class="col-md-6">
+
+                                    @Html.RadioButtonFor(model => model.IsConsent, true)
+                                    @Html.Label(Languages.Global.Yes)
+                                    @Html.RadioButtonFor(model => model.IsConsent, false)
+                                    @Html.Label(Languages.Global.No)
+                                    @Html.ValidationMessageFor(model => model.IsConsent)
+                                </div>
+                            </div>
+
+                            <div class=" form-group">
+                                @Html.LabelFor(model => model.Diagnoses, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.ListBox("DiagnosesForParticipant", (List<SelectListItem>)ViewBag.Diagnoses, String.Empty)
+                                    @Html.ValidationMessageFor(model => model.Diagnoses)
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                @Html.LabelFor(model => model.MedicalHistories, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.ListBox("MedicalHistoriesForParticipant", (List<SelectListItem>)ViewBag.Medicalhistories, String.Empty)
+                                    @Html.ValidationMessageFor(model => model.MedicalHistories)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Menarche, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Menarche)
+                                    @Html.ValidationMessageFor(model => model.Menarche)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ParticipantSmokingAge, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.ParticipantSmokingAge)
+                                    @Html.ValidationMessageFor(model => model.ParticipantSmokingAge)
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurgeryType.Name, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("SurgeryType_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.SurgeryType_Id)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurgeryDate, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SurgeryDate)
+                                    @Html.ValidationMessageFor(model => model.SurgeryDate)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+
+            <div class="Container">
+                <div class="col-xs-12">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            @Languages.Global.FamilyHistoric
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td class="col-md-2"></td>
+                                <td>
+                                    <h4>
+                                        <span class="label label-default">
+                                            @Languages.Global.Mother
+                                        </span>
+                                    </h4>
+                                </td>
+                                <td class="col-md-2">
+                                    <h4>
+                                        <span class="label label-default">
+                                            @Languages.Global.Father
+                                        </span>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2">
+                                    @Html.LabelFor(model => model.IsMotherSmoking, new { @class = "control-label" })
+                                </td>
+                                <td class="col-md-2">
+                                    <div>
+                                        @Html.RadioButtonFor(model => model.IsMotherSmoking, true)
+                                        @Html.Label(Languages.Global.Yes)
+                                        @Html.RadioButtonFor(model => model.IsMotherSmoking, false)
+                                        @Html.Label(Languages.Global.No)
+                                        @Html.ValidationMessageFor(model => model.IsMotherSmoking)
+                                    </div>
+                                </td>
+                                <td class="col-md-2">
+                                    <div>
+                                        @Html.RadioButtonFor(model => model.IsFatherSmoking, true)
+                                        @Html.Label(Languages.Global.Yes)
+                                        @Html.RadioButtonFor(model => model.IsFatherSmoking, false)
+                                        @Html.Label(Languages.Global.No)
+                                        @Html.ValidationMessageFor(model => model.IsFatherSmoking)
+                                    </div>
+                                </td>
+
+                            <tr>
+                                <td class="col-md-2">
+                                    @Html.LabelFor(model => model.MotherSmokingNumber, new { @class = "control-label " })
+
+                                </td>
+                                <td class="col-md-2">
+                                    <div>
+                                        @Html.EditorFor(model => model.MotherSmokingNumber)
+                                        @Html.ValidationMessageFor(model => model.FatherSmokingNumber)
+                                    </div>
+                                </td>
+                                <td class="col-md-2">
+                                    <div>
+                                        @Html.EditorFor(model => model.FatherSmokingNumber)
+                                        @Html.ValidationMessageFor(model => model.FatherSmokingNumber)
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2">
+                                    @Html.LabelFor(model => model.MotherSmokingAge, new { @class = "control-label " })
+                                </td>
+                                <td class="col-md-2">
+                                    <div>
+                                        @Html.EditorFor(model => model.MotherSmokingAge)
+                                        @Html.ValidationMessageFor(model => model.FatherSmokingAge)
+                                    </div>
+                                </td>
+                                <td class="col-md-2">
+                                    <div>
+                                        @Html.EditorFor(model => model.FatherSmokingAge)
+                                        @Html.ValidationMessageFor(model => model.FatherSmokingAge)
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Container">
+                <div class="col-xs-12">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            @Html.LabelFor(model => model.Comment)
+                        </div>
+                        <div>
+                            @Html.TextAreaFor(model => model.Comment, new { @class= "Fullwide" , rows = 5})
+                            @Html.ValidationMessageFor(model => model.Comment)
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        <div class="btn-toolbar pull-right ">
+            <div>
+                <a href="@Url.Content("~/Participant")" class="btn btn-danger "><span>@Languages.Global.Cancel </span></a>
+                @if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
+                {
+                    <input type="submit" value="@Languages.Global.Save" class="btn btn-success" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                    <script src="~/Scripts/chosen.jquery.js"></script>
+                    <script>
+    $(document).ready(function () {
+        $("#DiagnosesForParticipant").chosen({
+            placeholder_text_multiple: "@Languages.Global.SomeOptions",
+            width: "50%"
+        });
+        $("#MedicalHistoriesForParticipant").chosen({
+            placeholder_text_multiple: "@Languages.Global.SomeOptions",
+            width: "50%",
+
+        });
+        $("#City_Id").chosen({
+            placeholder_text_single: "@Languages.Global.OneOption",
+            width: "50%"
+        });
+        $("#EthnicGroup_Id").chosen({
+            placeholder_text_single: "@Languages.Global.OneOption",
+            width: "50%",
+            disable_search: true
+        });
+        $("#Group_Id").chosen({
+            placeholder_text_single: "@Languages.Global.OneOption",
+            width: "50%",
+            disable_search: true
+        });
+        $("#Family_Id").chosen({
+            placeholder_text_single: "@Languages.Global.OneOption",
+            width: "50%",
+            disable_search: true
+        });
+        $("#FamilyRole_Id").chosen({
+            placeholder_text_single: "@Languages.Global.OneOption",
+            width: "50%",
+            disable_search: true
+        });
+        $("#SurgeryType_Id").chosen({
+            width: "50%",
+            disable_search: true,
+            placeholder_text_single: "@Languages.Global.OneOption"
+        });
+        $("#Doctor_Id").chosen({
+            width: "50%",
+            disable_search: true,
+            placeholder_text_single: "@Languages.Global.OneOption"
+        });
+    });
+</script>
+                }
+
+
+

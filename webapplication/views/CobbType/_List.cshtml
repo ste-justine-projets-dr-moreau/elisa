@@ -1,0 +1,32 @@
+﻿@using GridMvc.Html
+@using Clinic.BackEnd.Models
+@model IEnumerable<Clinic.BackEnd.Models.CobbType>
+
+<br>
+<br>
+@if (((List<string>)Session["UserRoles"]).Contains("Administrator"))
+{
+    <input type="button" title="create" value='@Languages.Global.Add' class="btn btn-primary pull-right add" />
+}
+<br>
+<br>
+
+@helper RenderActionColumn(int id)
+{
+    if (((List<string>)Session["UserRoles"]).Contains("Administrator"))
+    {
+    <input type="button" value='@Languages.Global.Edit' id="@id" class="btn btn-info edit" />
+    @*<input type="button" value='@Languages.Global.Delete' id="@id" class="btn btn-danger btn-xs delete"  />*@
+    }
+}
+
+@Html.Grid(Model).Columns(columns =>
+            {
+
+                columns.Add(c => c.Name).Titled(@Languages.Global.English).Filterable(true);
+                columns.Add(c => c.NameFr).Titled(@Languages.Global.French).Filterable(true);
+                columns.Add(c => c.ShortName).Titled(Html.DisplayNameFor(x => x.ShortName).ToString()).Filterable(true);
+                columns.Add(c => c.IsActive).Titled(Html.DisplayNameFor(x => x.IsActive).ToString()).Filterable(true);
+                columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString()).SetWidth("15%");
+
+            }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())

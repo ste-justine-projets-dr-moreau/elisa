@@ -1,0 +1,72 @@
+﻿@using GridMvc.Html
+@using Clinic.BackEnd.Models
+@model IEnumerable<Clinic.BackEnd.Models.User>
+
+<!DOCTYPE html>
+
+<html>
+
+@section header {
+    <h1>@Html.Label(Languages.Global.User)</h1>
+}
+<body>
+
+    <br>
+    <br>
+    @if (((List<string>)Session["UserRoles"]).Contains("Administrator"))
+    {
+        <input type="button" title="create" value='@Languages.Global.Add' onclick="location.href='@Url.Action("create", "User")' ;" class="btn btn-primary pull-right " />
+    }
+    <br>
+    <br>
+
+
+    @helper RenderActionColumn(int id)
+{
+    <div class="btn-toolbar pull-right ">
+        <input type="button" title="create" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "User", new { ID = id })' ;" class="btn btn-info pull-Right" />
+    </div>
+}
+    @helper YesNo(User user)
+{
+    if (user.IsActive)
+    {
+       @Languages.Global.Yes
+    }
+    else
+    {
+       @Languages.Global.No
+    }
+}
+
+
+
+
+        @Html.Grid(Model).Columns(columns =>
+            {
+                columns.Add(c => c.LastName).Titled(Html.DisplayNameFor(x => x.LastName).ToString()).Filterable(true);
+                columns.Add(c => c.FirstName).Titled(Html.DisplayNameFor(x => x.FirstName).ToString()).Filterable(true);
+                columns.Add(c => c.Email).Titled(Html.DisplayNameFor(x => x.Email).ToString()).Filterable(true);
+                columns.Add(c => c.NT).Titled(Html.DisplayNameFor(x => x.NT).ToString()).Filterable(true);
+                columns.Add(c => c.Language.Name).Titled(Html.DisplayNameFor(x => x.Language.Name).ToString()).Filterable(true);
+                columns.Add(c => c.IsActive).Titled(Html.DisplayNameFor(x => x.IsActive).ToString()).Filterable(true).RenderValueAs(c => YesNo(c));
+                columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+
+            }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+    <div>
+
+
+        @section scripts
+                {
+
+        }
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
