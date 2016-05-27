@@ -23,170 +23,108 @@
 
 
     <div class="row">
-        Sélectionner une source de donnée :
-        <select id="lst-datasource">
-            <option value="1">Example</option>
-            <option value="2">Cobb</option>
-            <option value="3">Participant</option>
-        </select>
+        <div class="col-md-2">Source de donnée</div>
+        <div class="col-md-10">
+            <select id="lst-datasource">
+                <option value="2">Cobb</option>
+                <option value="3">Participant</option>
+            </select>
+        </div>
     </div>
     <div class="row">
-        Sélectionner une type de représentation :
-        <select id="lst-chart-type">
-            <option value="1">Ligne</option>
-            <option value="2">Pie chart</option>
-            <option value="3">Bar chart</option>
-        </select>
+        <div class="col-md-2">Type d'opération</div>
+        <div class="col-md-10">
+            <select id="lst-operation">
+                <option value="0">Choisir une opération ...</option>
+                <option value="1">Comptage simple</option>
+                <option value="2">Comptage par valeur</option>
+                <option value="3">Étude</option>
+            </select>
+        </div>
     </div>
     <div class="row">
-        
-        Sélectionner une dimension :
-        <select id="lst-dimension"></select>
-        <button id="btn-add-dimension">Ajouter</button>
-
+        <div class="col-md-2">Type de représentation</div>
+        <div class="col-md-10">
+            <select id="lst-chart-type">
+                <option value="2">Pie chart</option>
+                <option value="3">Bar chart</option>
+            </select>
+        </div>
     </div>
     <div class="row">
-
-        Sélectionner une proprieté à étudier de la dimension :
-        <select id="lst-properties"></select>
-        <button id="btn-add-propertie">Ajouter</button>
-
+        <div class="col-md-2">Dimension</div>
+        <div class="col-md-10">
+            <select id="lst-dimension"></select>
+        </div>
     </div>
     <div class="row">
-        <button id="btn-generate-chart">Generate chart</button>
+        <div class="col-md-2">Filtre</div>
+        <div class="col-md-10">
+            <select id="lst-filter">
+                <option value="0">Choisir un filtre ...</option>
+                <option value="1">Exacte</option>
+                <option value="2">Intervalle</option>
+            </select>
+        </div>
     </div>
     <div class="row">
-        <div id="dynamic-chart"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <input id="filter-interval-begin" type="text" value="" />
+            <input id="filter-interval-end" type="text" value="" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Proprieté à étudier de la dimension</div>
+        <div class="col-md-10">
+            <select id="lst-properties"></select>
+            @*<button id="btn-add-propertie">Ajouter</button>*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button id="btn-generate-chart">Générer</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="dynamic-div"></div>
+            <div id="dynamic-chart"></div>
+        </div>  
     </div>
 </div>
 
 <script>
 
     $(document).ready(function () {
-        /*
-        var data = [
-		    { date: "12/27/2012", http_404: 2, http_200: 190, http_302: 100 },
-		    { date: "12/28/2012", http_404: 2, http_200: 10, http_302: 100 },
-		    { date: "12/29/2012", http_404: 1, http_200: 300, http_302: 200 },
-		    { date: "12/30/2012", http_404: 2, http_200: 90, http_302: 0 },
-		    { date: "12/31/2012", http_404: 2, http_200: 90, http_302: 0 },
-		    { date: "01/01/2013", http_404: 2, http_200: 90, http_302: 0 },
-		    { date: "01/02/2013", http_404: 1, http_200: 10, http_302: 1 },
-		    { date: "01/03/2013", http_404: 2, http_200: 90, http_302: 0 },
-		    { date: "01/04/2013", http_404: 2, http_200: 90, http_302: 0 },
-		    { date: "01/05/2013", http_404: 2, http_200: 90, http_302: 0 },
-		    { date: "01/06/2013", http_404: 2, http_200: 200, http_302: 1 },
-		    { date: "01/07/2013", http_404: 1, http_200: 200, http_302: 100 }
-        ];
-        var ndx = crossfilter(data);
 
+        // TODOs
+        // - Remove the array of dimensions
+        // - Remove switch case (modularity, maintenability)
+        //
 
-        // Pre-traitement des donnees
-        var parseDate = d3.time.format("%m/%d/%Y").parse;
+        setTimeout(function () {
+            $("#lst-datasource").val("3");
+            $("#lst-datasource").val("2");
+        }, 2500);
 
-        data.forEach(function (d) {
-            d.date = parseDate(d.date);
-            d.total = d.http_404 + d.http_200 + d.http_302;
-            d.Year = d.date.getFullYear();
-        });
-
-
-        // Création des dimensions
-        var dateDim = ndx.dimension(function (d) { return d.date; });
-        var hits = dateDim.group().reduceSum(function (d) { return d.total; });
-
-        var minDate = dateDim.bottom(1)[0].date;
-        var maxDate = dateDim.top(1)[0].date;
-
-        var status_200 = dateDim.group().reduceSum(function (d) { return d.http_200; });
-        var status_302 = dateDim.group().reduceSum(function (d) { return d.http_302; });
-        var status_404 = dateDim.group().reduceSum(function (d) { return d.http_404; });
-
-
-        // Création du tableau
-        var hitslineChart = dc.lineChart("#chart-line-hitsperday");
-
-        hitslineChart
-            .width(500).height(200)
-            .dimension(dateDim)
-
-            //.group(hits)
-            .group(status_200, "200")
-            .stack(status_302, "302")
-            .stack(status_404, "404")
-            .renderArea(true)
-
-            .x(d3.time.scale().domain([minDate, maxDate]))
-            .brushOn(false)
-            .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
-            .yAxisLabel("Hits per day");
-
-
-
-        // Pie chart
-
-        var yearRingChart = dc.pieChart("#chart-ring-year");
-        var yearDim = ndx.dimension(function (d) { return d.Year; });
-        var year_total = yearDim.group().reduceSum(function (d) { return d.http_200 + d.http_302 + d.http_404; });
-
-        yearRingChart
-            .width(150).height(150)
-            .dimension(yearDim)
-            .group(year_total)
-            .innerRadius(30);
-
-        dc.renderAll();
-
-        */
-
-
-        // Prototype here
-
-        var data = [
-            { date: "12/27/2012", http_404: 2, http_200: 190, http_302: 100 },
-            { date: "12/28/2012", http_404: 2, http_200: 10, http_302: 100 },
-            { date: "12/29/2012", http_404: 1, http_200: 300, http_302: 200 },
-            { date: "12/30/2012", http_404: 2, http_200: 90, http_302: 0 },
-            { date: "12/31/2012", http_404: 2, http_200: 90, http_302: 0 },
-            { date: "01/01/2013", http_404: 2, http_200: 90, http_302: 0 },
-            { date: "01/02/2013", http_404: 1, http_200: 10, http_302: 1 },
-            { date: "01/03/2013", http_404: 2, http_200: 90, http_302: 0 },
-            { date: "01/04/2013", http_404: 2, http_200: 90, http_302: 0 },
-            { date: "01/05/2013", http_404: 2, http_200: 90, http_302: 0 },
-            { date: "01/06/2013", http_404: 2, http_200: 200, http_302: 1 },
-            { date: "01/07/2013", http_404: 1, http_200: 200, http_302: 100 }
-        ];
-
-        var ndx = crossfilter(data);
-
-        // Pre-traitement des donnees
-        //var parseDate = d3.time.format("%m/%d/%Y").parse;
-
-        /*data.forEach(function (d) {
-            d.date = parseDate(d.date);
-        });*/
-        
-
+        var data = [];
+        var ndx = null;
         var datasource;
         var dimensions = [];
         var properties = [];
-        var dsItemProperties = Object.keys(data[0]);
+        var dsItemProperties = null;
         var dimensionOptions = $("#lst-dimension");
         var propertiesOptions = $("#lst-properties");
+        var operationOptions = $("#lst-operation");
+        var filterOptions = $("#lst-filter");
 
-        
-        $.each(dsItemProperties, function (index, value) {
+        var currentDimension = null;
 
-            var option = $("<option />").val(value).text(value);
-            dimensionOptions.append(option);
-            propertiesOptions.append(option.clone());
 
-        });
 
         function setDatasource(ds) {
 
-            console.log("show me data !");
-            console.log(ds);
             datasource = ds;
 
             ndx = crossfilter(datasource);
@@ -206,24 +144,38 @@
             });
         }
 
+        function retrieveTotal() {
+            return ndx.groupAll().reduceCount().value();
+        }
+
+        function hideForSumOnly() {
+            $("#lst-dimension").hide();
+            $("#lst-chart-type").hide();
+            $("#lst-properties").hide();
+        }
+
+        function showForNotSumOnly() {
+            $("#lst-dimension").show();
+            $("#lst-chart-type").show();
+            $("#lst-properties").show();
+        }
+
+
         $("#lst-datasource").on('change', function () {
 
             var datasourceSelected = $(this).val();
 
             switch (datasourceSelected) {
                 case "1":
-                    console.log("example...");
                     setDatasource(data);
                     break;
                 case "2":
-                    console.log("cobb...");
-                    $.getJSON("GetData2", function (data) {
+                    $.getJSON("@Url.Action("GetData2", "Analytique", null, Request.Url.Scheme)", function (data) {
                         setDatasource(data);
                     });
                     break;
                 case "3":
-                    console.log("participant...");
-                    $.getJSON("GetData", function (data) {
+                    $.getJSON("@Url.Action("GetData", "Analytique", null, Request.Url.Scheme)", function (data) {
                         setDatasource(data);
                     });
                     break;
@@ -232,97 +184,141 @@
             }
         });
 
-        $("#btn-add-dimension").click(function () {
+        $("#lst-operation").on('change', function () {
+            var operationSelected = $(this).val();
 
-            var selectedDimension = dimensionOptions.val();
-            var dimension = ndx.dimension(function (d) { return d[selectedDimension]; });
-            dimensions.push(dimension);
+            switch (operationSelected) {
+                case "1":
+                    hideForSumOnly();
+                    break;
+                default:
+                    showForNotSumOnly();
+            }
 
         });
 
         $("#btn-add-propertie").click(function () {
 
+            alert("Hello  " + operationOptions.val() + " !!!");
+
             var selectedDimension = dimensions[0]; //To modify
             var selectedPropertie = propertiesOptions.val();
+            var propertie = null;
 
-            var propertie = selectedDimension
+                propertie = selectedDimension
                                 .group()
                                 .reduceSum(function (d) {
-                                    console.log(selectedPropertie);
                                     return d[selectedPropertie];
                                 });
 
+
             properties.push(propertie);
-            console.log(properties);
         });
 
         $("#btn-generate-chart").click(function () {
 
-            var chartFunction = "";
-            var chartTypeValue = $("#lst-chart-type").val();
+            var selectedOperation = operationOptions.val();
+            if (selectedOperation == "1") {
 
-            switch (chartTypeValue) {
-                case "1":
-                    chartFunction = "lineChart";
-                    break;
-                case "2":
-                    chartFunction = "pieChart";
-                    break;
-                case "3":
-                    chartFunction = "barChart";
-                default:
+                $("#dynamic-div").html(retrieveTotal());
 
-            }
+            } else {
 
-            console.log("chartFunction");
-            console.log(chartFunction);
+                var chartFunction = "";
+                var chartTypeValue = $("#lst-chart-type").val();
+
+                switch (chartTypeValue) {
+                    case "1":
+                        chartFunction = "lineChart";
+                        break;
+                    case "2":
+                        chartFunction = "pieChart";
+                        break;
+                    case "3":
+                        chartFunction = "barChart";
+                    default:
+
+                }
+
+                //Current dimension
+                var selectedDimension = dimensionOptions.val();
+                currentDimension = ndx.dimension(function (d) { return d[selectedDimension]; });
 
 
-            var dynamicChart = dc[chartFunction]("#dynamic-chart");
 
-            var minDate = dimensions[0].bottom(1)[0].date;
-            var maxDate = dimensions[0].top(1)[0].date;
+                var dynamicChart = dc[chartFunction]("#dynamic-chart");
 
-            dynamicChart
-                .width(500).height(200)
+                //To make this cleaner
+                var isSumByValue = operationOptions.val() == "2";
+                if (isSumByValue) {
+                    var propertie = currentDimension
+                                        .group()
+                                        .reduceSum(function (d) {
+                                            return d.Number;
+                                        });
+                    properties.push(propertie);
+                }
 
-                .dimension(dimensions[0])
-                .group(properties[0])
+
+
+                dynamicChart
+                    .width(1000).height(500)
+
+                    .dimension(currentDimension)
+                    .group(properties[0])
 
                 //.x(d3.time.scale().domain([minDate, maxDate])) // obligatoire
-            ;
+                ;
 
-            if (chartTypeValue == "3") {
+                if (chartTypeValue == "3") {
 
-                console.log("bar chart !!");
+                    dynamicChart
+                        .x(d3.scale.ordinal())
+                        .xUnits(dc.units.ordinal);
 
-                dynamicChart
-                    .x(d3.scale.ordinal())
-                    .xUnits(dc.units.ordinal);
+                }
+
+                if (chartTypeValue == "2") {
+                    console.log("pie chart !!");
+
+                    dynamicChart
+                        .innerRadius(30);
+                }
+
+                if (chartTypeValue == "1") {
+                    console.log("line chart !!");
+
+                    dynamicChart
+                        .x(d3.scale.ordinal())
+                        .xUnits(dc.units.ordinal);
+                }
+
+
+                // Clean this
+                // We need to create a new dimension to filter.
+                var isFilterByInterval = filterOptions.val() == "2";
+                if (isFilterByInterval) {
+                    alert("isFilterByInterval");
+                    var begin = parseInt($("#filter-interval-begin").val()),
+                        end = parseInt($("#filter-interval-end").val());
+                    alert("begin " + begin);
+                    alert("end " + end);
+
+                    var selectedDimension = dimensionOptions.val();
+                    var filterDimension = ndx.dimension(function (d) { return d[selectedDimension]; });
+
+                    filterDimension.filter([begin, end]);
+                }
+
+
+                dc.renderAll();
+
+                console.log(datasource);
 
             }
 
-            if (chartTypeValue == "2") {
-                console.log("pie chart !!");
-
-                dynamicChart
-                    .innerRadius(30);
-            }
-
-            if (chartTypeValue == "1") {
-                console.log("line chart !!");
-
-                dynamicChart
-                    .x(d3.scale.ordinal())
-                    .xUnits(dc.units.ordinal);
-            }
             
-            console.log(datasource);
-
-            dc.renderAll();
         });
-
-
 
     });
 

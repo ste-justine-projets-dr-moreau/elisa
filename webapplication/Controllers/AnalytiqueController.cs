@@ -1,8 +1,5 @@
 ﻿using Clinic.BackEnd.Context;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace WebApplication.Controllers
@@ -26,7 +23,6 @@ namespace WebApplication.Controllers
                                         Sex = e.IsMale ? "M" : "F",
                                         Number = 1
                                     })
-                                    .Take(200)
                                     .ToList();
 
             return Json(participants, JsonRequestBehavior.AllowGet);
@@ -37,11 +33,10 @@ namespace WebApplication.Controllers
             var cobbs = db.Cobbs
                             .Where(e => e.IsRight.HasValue && e.CobbType != null)
                             .Select(e => new {
-
                                 Angle = e.Angle,
                                 IsRight = e.IsRight,
-                                CobbType = e.CobbType.Name.Trim()
-
+                                CobbType = e.CobbType.Name.Trim(),
+                                Number = 1
                             })
                             .Take(200)
                             .ToList();
