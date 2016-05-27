@@ -48,3 +48,5 @@ Temporary Items
 /clinic.backend/obj
 /Clinic.Repository/bin
 /Clinic.Repository/obj
+/.vs/Hopital.Clinical.Study/v14/.suo
+/.vs/config/applicationhost.config
