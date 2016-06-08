@@ -57,7 +57,7 @@
                                 </div>
                                 <div style="padding-left: 5px">
 
-                                        @if (((List<string>)Session["UserRoles"]).Contains("Nurse")) 
+                                        @if (((List<string>)Session["UserRoles"]).Contains("Nurses")) 
                                         {
                                     <div class="form-group " style="padding-top: 10px">
                                         @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-4" })
@@ -86,6 +86,8 @@
                                         @Html.LabelFor(model => model.City.Name, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">
                                             @Html.DropDownList("City_Id", String.Empty)
+                                            @Html.Hidden("City.Name")
+                                            @Html.Hidden("City.Id")
                                             @Html.ValidationMessageFor(model => model.City_Id)
                                         </div>
                                     </div>
@@ -128,11 +130,13 @@
                                         @Html.LabelFor(model => model.Family.Name, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">
                                             @Html.DropDownList("Family_Id", String.Empty)
-                                        @if (((List<string>)Session["UserRoles"]).Contains("Nurse"))
-                                        {
-                                            <input type="button" id="btnAddFamily" value='@Languages.Global.Add' class="btn btn-success" />
-                                            @Html.ValidationMessageFor(model => model.Family_Id)
-                                         }
+                                            @Html.Hidden("Family.Name")
+                                            @Html.Hidden("Family.Id")
+                                            @if (((List<string>)Session["UserRoles"]).Contains("Nurse"))
+                                            {
+                                                <input type="button" id="btnAddFamily" value='@Languages.Global.Add' class="btn btn-success" />
+                                                @Html.ValidationMessageFor(model => model.Family_Id)
+                                            }
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -429,6 +433,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/chosen.jquery.js"></script>
+    <script src="~/Scripts/helpers.js"></script>
     <script>
         $(document).ready(function () {
             //Corset
@@ -624,6 +629,10 @@
         });
             
             //General
+
+            setupChosenSelectWithAdd("#City_Id", "City.Name", "City.Id", "@Languages.Global.OneOption", "Press Enter to add new entry");
+            setupChosenSelectWithAdd("#Family_Id", "Family.Name", "Family.Id", "@Languages.Global.OneOption", "Press Enter to add new entry");
+
             $("#tabs").tabs();
             $("#DiagnosesForParticipant").chosen({
 
@@ -635,21 +644,12 @@
                 width: "50%",
 
             });
-            $("#City_Id").chosen({
-                placeholder_text_single: "@Languages.Global.OneOption",
-                width: "50%"
-            });
             $("#EthnicGroup_Id").chosen({
                 placeholder_text_single: "@Languages.Global.OneOption",
                 width: "50%",
                 disable_search: true
             });
             $("#Group_Id").chosen({
-                placeholder_text_single: "@Languages.Global.OneOption",
-                width: "50%",
-                disable_search: true
-            });
-            $("#Family_Id").chosen({
                 placeholder_text_single: "@Languages.Global.OneOption",
                 width: "50%",
                 disable_search: true

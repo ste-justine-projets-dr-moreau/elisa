@@ -1,4 +1,4 @@
-﻿@using System.Web.UI.WebControls
+﻿
 @model Clinic.BackEnd.Models.Participant
 
 @{
@@ -59,6 +59,7 @@
                                 @Html.LabelFor(model => model.City.Name, new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
                                     @Html.DropDownList("City_Id", String.Empty)
+                                    @Html.Hidden("City.Name")
                                     @Html.ValidationMessageFor(model => model.City_Id)
                                 </div>
                             </div>
@@ -101,6 +102,7 @@
                                 @Html.LabelFor(model => model.Family.Name, new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
                                     @Html.DropDownList("Family_Id", String.Empty)
+                                    @Html.Hidden("Family.Name")
                                     @Html.ValidationMessageFor(model => model.Family_Id)
                                 </div>
                             </div>
@@ -339,11 +341,19 @@
 }
 
 
-                @section Scripts {
-                    @Scripts.Render("~/bundles/jqueryval")
-                    <script src="~/Scripts/chosen.jquery.js"></script>
-                    <script>
+@section Scripts {
+
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/helpers.js"></script>
+<script src="~/Scripts/chosen.jquery.js"></script>
+<script>
+
     $(document).ready(function () {
+
+        setupChosenSelectWithAdd("#City_Id", "City.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
+        setupChosenSelectWithAdd("#Family_Id", "Family.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
+
+
         $("#DiagnosesForParticipant").chosen({
             placeholder_text_multiple: "@Languages.Global.SomeOptions",
             width: "50%"
@@ -353,21 +363,13 @@
             width: "50%",
 
         });
-        $("#City_Id").chosen({
-            placeholder_text_single: "@Languages.Global.OneOption",
-            width: "50%"
-        });
+
         $("#EthnicGroup_Id").chosen({
             placeholder_text_single: "@Languages.Global.OneOption",
             width: "50%",
             disable_search: true
         });
         $("#Group_Id").chosen({
-            placeholder_text_single: "@Languages.Global.OneOption",
-            width: "50%",
-            disable_search: true
-        });
-        $("#Family_Id").chosen({
             placeholder_text_single: "@Languages.Global.OneOption",
             width: "50%",
             disable_search: true
@@ -389,7 +391,7 @@
         });
     });
 </script>
-                }
+}
 
 
 

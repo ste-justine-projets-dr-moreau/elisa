@@ -18,6 +18,8 @@ namespace WebApplication.Controllers
     {
         private readonly ClinicContext db = new ClinicContext();
 
+        #region Participant
+
         // GET: /Participant/
         public ActionResult Index()
         {
@@ -59,33 +61,6 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        [HttpPost]
-        public void DeleteParticipant(int participantId)
-        {
-            var participant =
-                db.Participants.Include(p => p.Appointments.Select(a => a.Samplings))
-                    .Include(p => p.Families)
-                    .First(p => p.Id == participantId);
-
-            var samplings = participant.Appointments.SelectMany(a => a.Samplings).ToList();
-            foreach (var sampling in samplings)
-            {
-                db.Samplings.Remove(sampling);
-            }
-            db.SaveChanges(User.Identity.Name);
-
-            foreach (var family in participant.Families.ToList())
-            {
-                family.Participant_Id = null;
-            }
-
-            db.SaveChanges(User.Identity.Name);
-
-            db.Participants.Remove(participant);
-            db.SaveChanges(User.Identity.Name);
-
-        }
-
         // POST: /Participant/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -95,6 +70,8 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                AddNewEntityIfNecessary(participant);
+
                 if (diagnosesForParticipant != null)
                 {
                     var selectedDiagnoses = db.Diagnoses.Where(x => diagnosesForParticipant.Contains(x.Id)).ToList();
@@ -189,101 +166,7 @@ namespace WebApplication.Controllers
 
             return View(participant);
         }
-
-
-        public ActionResult GetNewCorset(int participantId)
-        {
-            ViewBag.CorsetTypes = db.CorsetTypes.ToList().Select(st =>
-                new SelectListItem
-                {
-                    Value = st.Id.ToString(),
-                    Text = Session["Language"].ToString().ToLower() == "en" ? st.Name : st.NameFr,
-                });
-
-
-            return PartialView("_CreateOrEditCorset", new Corset { Participant_Id = participantId });
-
-        }
-        public ActionResult GetCorset(int CorsetId)
-        {
-            var Corset = db.Corsets.Include(s => s.CorsetType).First(s => s.Id == CorsetId);
-
-            ViewBag.CorsetTypes = db.CorsetTypes.ToList().Select(st =>
-                new SelectListItem
-                {
-                    Value = st.Id.ToString(),
-                    Text = Session["Language"].ToString().ToLower() == "en" ? st.Name : st.NameFr,
-                    Selected = st.Id == Corset.CorsetType_Id
-                });
-
-            return PartialView("_CreateOrEditCorset", Corset);
-        }
-
-        public ActionResult GetCorsetForDeletion(int CorsetId)
-        {
-            var Corset = db.Corsets.Include(s => s.CorsetType).First(s => s.Id == CorsetId);
-
-            return PartialView("_ConfirmDeleteCorset", Corset);
-        }
-
-        [HttpPost]
-        public ActionResult DeleteCorset(int CorsetId)
-        {
-            var Corset = db.Corsets.Find(CorsetId);
-            db.Corsets.Remove(Corset);
-            db.SaveChanges(User.Identity.Name);
-
-            ViewBag.ApppointmentId = Corset.Participant_Id;
-
-            var participant =
-                db.Participants
-                .Include(a => a.Corsets.Select(s => s.CorsetType))
-                    .First(a => a.Id == Corset.Participant_Id);
-
-            ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id",
-                Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
-
-            return Json(new { success = true, html = this.RenderPartialViewToString("_ListCorsets", participant) });
-        }
-
-
-        [HttpPost]
-        public ActionResult CreateOrEditCorset(Corset Corset)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Corset.Id == 0)
-                {
-                    db.Corsets.Add(Corset);
-                }
-                else
-                {
-                    var CorsetFromDb = db.Corsets.First(s => s.Id == Corset.Id);
-                    CorsetFromDb.CorsetType_Id = Corset.CorsetType_Id;
-                    CorsetFromDb.Start = Corset.Start;
-                    CorsetFromDb.End = Corset.End;
-                    CorsetFromDb.Comment = Corset.Comment;
-                }
-
-                db.SaveChanges(User.Identity.Name);
-                ViewBag.ParticipantId = Corset.Participant_Id;
-
-                var participant =
-                    db.Participants
-                        .Include(a => a.Corsets.Select(s => s.CorsetType))
-                        .First(a => a.Id == Corset.Participant_Id);
-
-                ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id",
-                    Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
-
-                return Json(new { success = true, html = this.RenderPartialViewToString("_ListCorsets", participant) });
-            }
-
-            ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id", "Name", Corset.CorsetType_Id);
-
-            return Json(new { success = false, message = "form is invalid" });
-        }
-
+        
         // POST: /Participant/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -293,6 +176,8 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                AddNewEntityIfNecessary(participant);
+
                 db.Entry(participant).State = EntityState.Modified;
                 await db.SaveChangesAsync();
 
@@ -345,6 +230,8 @@ namespace WebApplication.Controllers
 
                 await db.SaveChangesAsync();
 
+                
+                //db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -352,7 +239,32 @@ namespace WebApplication.Controllers
             return View(participant);
         }
 
+        [HttpPost]
+        public void DeleteParticipant(int participantId)
+        {
+            var participant =
+                db.Participants.Include(p => p.Appointments.Select(a => a.Samplings))
+                    .Include(p => p.Families)
+                    .First(p => p.Id == participantId);
 
+            var samplings = participant.Appointments.SelectMany(a => a.Samplings).ToList();
+            foreach (var sampling in samplings)
+            {
+                db.Samplings.Remove(sampling);
+            }
+            db.SaveChanges(User.Identity.Name);
+
+            foreach (var family in participant.Families.ToList())
+            {
+                family.Participant_Id = null;
+            }
+
+            db.SaveChanges(User.Identity.Name);
+
+            db.Participants.Remove(participant);
+            db.SaveChanges(User.Identity.Name);
+
+        }
 
         // POST: /Participant/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -365,14 +277,106 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        #endregion
+
+        #region Corset
+
+        public ActionResult GetNewCorset(int participantId)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            ViewBag.CorsetTypes = db.CorsetTypes.ToList().Select(st =>
+                new SelectListItem
+                {
+                    Value = st.Id.ToString(),
+                    Text = Session["Language"].ToString().ToLower() == "en" ? st.Name : st.NameFr,
+                });
+
+
+            return PartialView("_CreateOrEditCorset", new Corset { Participant_Id = participantId });
+
         }
+
+        public ActionResult GetCorset(int CorsetId)
+        {
+            var Corset = db.Corsets.Include(s => s.CorsetType).First(s => s.Id == CorsetId);
+
+            ViewBag.CorsetTypes = db.CorsetTypes.ToList().Select(st =>
+                new SelectListItem
+                {
+                    Value = st.Id.ToString(),
+                    Text = Session["Language"].ToString().ToLower() == "en" ? st.Name : st.NameFr,
+                    Selected = st.Id == Corset.CorsetType_Id
+                });
+
+            return PartialView("_CreateOrEditCorset", Corset);
+        }
+
+        public ActionResult GetCorsetForDeletion(int CorsetId)
+        {
+            var Corset = db.Corsets.Include(s => s.CorsetType).First(s => s.Id == CorsetId);
+
+            return PartialView("_ConfirmDeleteCorset", Corset);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCorset(int CorsetId)
+        {
+            var Corset = db.Corsets.Find(CorsetId);
+            db.Corsets.Remove(Corset);
+            db.SaveChanges(User.Identity.Name);
+
+            ViewBag.ApppointmentId = Corset.Participant_Id;
+
+            var participant =
+                db.Participants
+                .Include(a => a.Corsets.Select(s => s.CorsetType))
+                    .First(a => a.Id == Corset.Participant_Id);
+
+            ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id",
+                Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+
+            return Json(new { success = true, html = this.RenderPartialViewToString("_ListCorsets", participant) });
+        }
+
+        [HttpPost]
+        public ActionResult CreateOrEditCorset(Corset Corset)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Corset.Id == 0)
+                {
+                    db.Corsets.Add(Corset);
+                }
+                else
+                {
+                    var CorsetFromDb = db.Corsets.First(s => s.Id == Corset.Id);
+                    CorsetFromDb.CorsetType_Id = Corset.CorsetType_Id;
+                    CorsetFromDb.Start = Corset.Start;
+                    CorsetFromDb.End = Corset.End;
+                    CorsetFromDb.Comment = Corset.Comment;
+                }
+
+                db.SaveChanges(User.Identity.Name);
+                ViewBag.ParticipantId = Corset.Participant_Id;
+
+                var participant =
+                    db.Participants
+                        .Include(a => a.Corsets.Select(s => s.CorsetType))
+                        .First(a => a.Id == Corset.Participant_Id);
+
+                ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id",
+                    Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+
+                return Json(new { success = true, html = this.RenderPartialViewToString("_ListCorsets", participant) });
+            }
+
+            ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id", "Name", Corset.CorsetType_Id);
+
+            return Json(new { success = false, message = "form is invalid" });
+        }
+
+        #endregion
+
+        #region Sampling
 
         //Show Sampling
         public ActionResult ShowSampling(int id)
@@ -388,6 +392,7 @@ namespace WebApplication.Controllers
             return PartialView("_Appointment", results.ToList());
         }
 
+        #endregion
 
         #region Add Family
 
@@ -421,6 +426,17 @@ namespace WebApplication.Controllers
         }
 
         #endregion
+
+        #region Private method and others
+        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         private void SetupViewBags(Participant participant)
         {
@@ -462,7 +478,40 @@ namespace WebApplication.Controllers
                 });
         }
 
+        private void AddNewEntityIfNecessary(Participant participant)
+        {
+            bool cityMustBeAdded = participant.City_Id < 1;
+            bool familyMustBeAdded = participant.Family_Id < 1;
+
+            if (cityMustBeAdded)
+            {
+                City newCity = new City
+                {
+                    Name = participant.City.Name,
+                    Province = db.Provinces.Single(e => e.Id == 2),
+                    Region = db.Regions.Single(e => e.Id == 18)
+                };
+                db.Cities.Add(newCity);
+                db.SaveChanges();
+
+                participant.City = newCity;
+                participant.City_Id = newCity.Id;
+            }
+
+            if (familyMustBeAdded)
+            {
+                Family newFamily = new Family
+                {
+                    Name = participant.Family.Name
+                };
+                db.Families.Add(newFamily);
+                db.SaveChanges();
+
+                participant.Family = newFamily;
+                participant.Family_Id = newFamily.Id;
+            }
+        }
+
+        #endregion
     }
-
-
 }
