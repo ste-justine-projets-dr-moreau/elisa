@@ -9,23 +9,17 @@
 <br />
 <br />
 
-
-
-
 <div class="container">
-    
     <div class="row">
-        <h2>Analytique</h2>
-
-        <div id="chart-ring-year"></div>
-        <div id="chart-line-hitsperday"></div>
+        <div class="col-md-12">
+            <h2>Analytique</h2>
+        </div>
     </div>
-
-
     <div class="row">
         <div class="col-md-2">Source de donnée</div>
         <div class="col-md-10">
             <select id="lst-datasource">
+                <option>Choisir une source de donnée ...</option>
                 <option value="2">Cobb</option>
                 <option value="3">Participant</option>
             </select>
@@ -78,7 +72,6 @@
         <div class="col-md-2">Proprieté à étudier de la dimension</div>
         <div class="col-md-10">
             <select id="lst-properties"></select>
-            @*<button id="btn-add-propertie">Ajouter</button>*@
         </div>
     </div>
     <div class="row">
@@ -92,6 +85,85 @@
             <div id="dynamic-chart"></div>
         </div>  
     </div>
+
+    <div>
+        @using (Html.BeginForm("ComputeAverageCobb", "Analytique", FormMethod.Post))
+        { 
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Moyenne Cobb</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.CheckBox("sexFilter")
+                Sexe
+            </div>
+            <div class="col-md-10">
+                @{
+                    var listSex = new List<SelectListItem>();
+                    listSex.Add(new SelectListItem { Text = "Homme", Value = "1" });
+                    listSex.Add(new SelectListItem { Text = "Femme", Value = "2" });
+                }
+
+                @Html.DropDownList("sex", listSex)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.CheckBox("ageFilter")
+                Age
+            </div>
+            <div class="col-md-10">
+                @Html.Editor("ageBegin")
+                @Html.Editor("ageEnd")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button id="btn-generate-chart" type="submit">Générer moyenne Cobb</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @{
+                    bool averageCobbComputed = (bool)ViewBag.AverageCobbComputed;
+                    double? averageCobb = (double?)ViewBag.AverageCobb;
+                }
+
+                @if (averageCobbComputed)
+                {
+                    <span>Moyenne Cobb: </span>
+                    if (averageCobb.HasValue)
+                    {
+                        <span>@(averageCobb.Value)</span>
+                    }
+                    else
+                    {
+                        <span>Aucune valeur</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @if (averageCobbComputed) { 
+                    foreach (dynamic item in ViewBag.ParticipantCobbs) {
+                        <span>@item.ToString()</span><br />
+                    }
+                }
+            </div>
+        </div>
+        }
+    </div>
+
 </div>
 
 <script>
@@ -102,11 +174,6 @@
         // - Remove the array of dimensions
         // - Remove switch case (modularity, maintenability)
         //
-
-        setTimeout(function () {
-            $("#lst-datasource").val("3");
-            $("#lst-datasource").val("2");
-        }, 2500);
 
         var data = [];
         var ndx = null;
