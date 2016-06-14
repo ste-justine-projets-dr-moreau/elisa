@@ -40,7 +40,15 @@ namespace Clinic.BackEnd.Models.Mapping
             Property(t => t.Comment).HasColumnName("Comment");
             Property(t => t.EthnicPrecision).HasColumnName("EthnicPrecision");
             Property(t => t.SurgeryDate).HasColumnName("SurgeryDate");
-            
+            Property(t => t.FamilyHistory).HasColumnName("FamilyHistory");
+            Property(t => t.Medication).HasColumnName("Medication");
+            Property(t => t.DomesticAnimals).HasColumnName("DomesticAnimals");
+            Property(t => t.SchoolYear).HasColumnName("SchoolYear");
+
+
+
+
+
             Property(t => t.City_Id).HasColumnName("City_Id");
             Property(t => t.Group_Id).HasColumnName("Group_Id");
             Property(t => t.Doctor_Id).HasColumnName("Doctor_Id");

@@ -160,7 +160,7 @@
     <value>Smoking </value>
   </data>
   <data name="IsMale" xml:space="preserve">
-    <value>Sexe</value>
+    <value>Gender</value>
   </data>
   <data name="IsMotherSmoking" xml:space="preserve">
     <value>Smoking while pregnant</value>
@@ -203,5 +203,17 @@
   </data>
   <data name="Telephone" xml:space="preserve">
     <value>Telephone</value>
+  </data>
+  <data name="DomesticAnimals" xml:space="preserve">
+    <value>Domestic Animals</value>
+  </data>
+  <data name="FamilyHistory" xml:space="preserve">
+    <value>Family History</value>
+  </data>
+  <data name="Medication" xml:space="preserve">
+    <value>Medication</value>
+  </data>
+  <data name="SchoolYear" xml:space="preserve">
+    <value>School Year</value>
   </data>
 </root>
