@@ -157,7 +157,7 @@
     <value>Date Rendez-vous</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>Taille</value>
+    <value>Taille (cm)</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Heure</value>
@@ -175,6 +175,6 @@
     <value>Fumeur</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>Poids</value>
+    <value>Poids (kg)</value>
   </data>
 </root>

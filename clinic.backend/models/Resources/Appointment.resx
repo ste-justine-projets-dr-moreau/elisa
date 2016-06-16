@@ -157,7 +157,7 @@
     <value>Appointment Date</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>Height</value>
+    <value>Height (cm)</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Hour</value>
@@ -175,6 +175,6 @@
     <value>Smoker</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>Weight</value>
+    <value>Weight (kg)</value>
   </data>
 </root>
