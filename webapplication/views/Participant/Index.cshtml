@@ -1,5 +1,5 @@
 ﻿@using GridMvc.Html
-@using Clinic.BackEnd.Models
+
 @model IEnumerable<Clinic.BackEnd.Models.Participant>
 
 <!DOCTYPE html>
@@ -32,16 +32,33 @@
             @if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
             {
                 @Html.Grid(Model).Columns(columns =>
-            {
+                {
 
-                columns.Add(c => c.Id).Titled(Html.DisplayNameFor(x => x.Id).ToString()).Filterable(true);
-                columns.Add(c => c.FullName).Titled(Html.DisplayNameFor(x => x.FullName).ToString()).Filterable(true);
-                columns.Add(c => c.Family_Id).Titled(Html.DisplayNameFor(x => x.Family.Id).ToString()).Filterable(true);
-                columns.Add(c => c.City.Name).Titled(Html.DisplayNameFor(x => x.City.Name).ToString()).Filterable(true);
-                columns.Add(c => c.DOB).Titled(Html.DisplayNameFor(x => x.DOB).ToString()).Filterable(true).Format("{0:yyyy/mm/dd}");
-                columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+                    columns.Add(c => c.Id)
+                        .Titled(Html.DisplayNameFor(x => x.Id).ToString())
+                        .Filterable(true);
 
-            }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+                    columns.Add(c => c.FullName)
+                        .Titled(Html.DisplayNameFor(x => x.FullName).ToString())
+                        .Filterable(true);
+
+                    columns.Add(c => c.Family_Id)
+                        .Titled(Html.DisplayNameFor(x => x.Family.Id).ToString())
+                        .Filterable(true);
+
+                    columns.Add(c => c.City.Name)
+                        .Titled(Html.DisplayNameFor(x => x.City.Name).ToString())
+                        .Filterable(true);
+
+                    columns.Add(c => c.DOB)
+                        .Titled(Html.DisplayNameFor(x => x.DOB).ToString())
+                        .Filterable(true).Format("{0:yyyy/mm/dd}");
+
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString());
+
+                }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
             }
 
             else

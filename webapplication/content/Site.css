@@ -112,3 +112,8 @@ nav ul ul {
 {
      width: 100%;
 }
+
+table.grid-table.filter-on-left .grid-filter {
+    float: left;
+    margin-right: 5px;
+}
