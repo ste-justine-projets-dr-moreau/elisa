@@ -241,7 +241,7 @@
 
                                             @Html.RadioButtonFor(model => model.IsConsent, true)
                                             @Html.Label(Languages.Global.Yes)
-                                            @Html.RadioButtonFor(model => model.IsConsent, false)
+                                            @Html.RadioButtonFor(model => model.IsConsent, false, new { @checked = (!Model.IsConsent.HasValue) })
                                             @Html.Label(Languages.Global.No)
                                             @Html.ValidationMessageFor(model => model.IsConsent)
                                         </div>
