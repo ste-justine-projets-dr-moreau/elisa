@@ -130,7 +130,7 @@
     <value>Date de Naissance</value>
   </data>
   <data name="Doctor_Id" xml:space="preserve">
-    <value>Docteur</value>
+    <value>Médecin traitant</value>
   </data>
   <data name="EthnicPrecision" xml:space="preserve">
     <value>Précision Ethnique</value>
