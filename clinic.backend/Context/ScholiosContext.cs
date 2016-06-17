@@ -126,7 +126,10 @@ namespace Clinic.BackEnd.Context
             }
 
 
-            return rowsModified + base.SaveChanges();
+            // was
+            //return rowsModified + base.SaveChanges();
+
+            return rowsModified;
         }
 
         private IEnumerable<Log> GetAuditRecordsForChange(DbEntityEntry dbEntry, string nt)

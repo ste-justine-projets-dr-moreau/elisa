@@ -497,6 +497,10 @@ namespace WebApplication.Controllers
                 participant.City = newCity;
                 participant.City_Id = newCity.Id;
             }
+            else
+            {
+                participant.City = db.Cities.Single(c => c.Id == participant.City_Id);
+            }
 
             if (familyMustBeAdded)
             {
