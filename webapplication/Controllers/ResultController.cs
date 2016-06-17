@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Clinic.BackEnd.Context;
 using Clinic.BackEnd.Models;
@@ -72,19 +70,24 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,Labresult,User_Id,LabTest_Id,Sampling_Id, SubSample")] Result result)
-        
+        public ActionResult Create([Bind(Include = "Id, Date, Labresult, User_Id, LabTest_Id, Sampling_Id, SubSample, Comment")] Result result)
         {
             if (ModelState.IsValid)
             {
                 db.Results.Add(result);
                 db.SaveChanges(User.Identity.Name);
                 ViewBag.SamplingId = result.Sampling_Id;
-               var results = db.Results.Where(a => a.Sampling_Id == result.Sampling_Id);
-               return Json(new { success = true, html = this.RenderPartialViewToString("_Index", results) });
-                //return Json(new { success = true, html = "test" });
- }
+
+                return Json(new {
+                    success = true,
+                    html = this.RenderPartialViewToString("_Index", db.Results
+                                                                        .Where(a => a.Sampling_Id == result.Sampling_Id)
+                                                                        .ToList())
+                });
+            }
+
             ViewBag.LabTest_Id = new SelectList(db.LabTests, "Id", "Name", result.LabTest_Id);
+
             return PartialView("_Create", result);
         }
 
@@ -109,7 +112,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,Labresult,User_Id,LabTest_Id,Sampling_Id, SubSample")] Result result)
+        public ActionResult Edit([Bind(Include = "Id, Date, Labresult, User_Id, LabTest_Id, Sampling_Id, SubSample, Comment")] Result result)
         {
             if (ModelState.IsValid)
             {

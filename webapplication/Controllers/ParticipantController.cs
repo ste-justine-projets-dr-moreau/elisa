@@ -31,10 +31,11 @@ namespace WebApplication.Controllers
          //[Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
-            ViewBag.City_Id = new SelectList(db.Cities.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+            ViewBag.City_Id = new SelectList(db.Cities.OrderBy(x => x.Name), "Id", "Name");
+            ViewBag.Family_Id = new SelectList(db.Families.OrderBy(x => x.Name), "Id", "Name");
+
             ViewBag.Doctor_Id = new SelectList(db.Users.Include(x => x.Roles).Where(x => x.Roles.Any(j => j.Name == "Doctor")), "Id", "FullName");
             ViewBag.Group_Id = new SelectList(db.Groups.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
-            ViewBag.Family_Id = new SelectList(db.Families.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
             ViewBag.FamilyRole_Id = new SelectList(db.FamilRoles.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
             ViewBag.EthnicGroup_Id = new SelectList(db.EthnicGroups.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
             ViewBag.SurgeryType_Id = new SelectList(db.SurgeryTypes.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
@@ -496,6 +497,10 @@ namespace WebApplication.Controllers
 
                 participant.City = newCity;
                 participant.City_Id = newCity.Id;
+            }
+            else
+            {
+                participant.City = db.Cities.Single(c => c.Id == participant.City_Id);
             }
 
             if (familyMustBeAdded)
