@@ -5,7 +5,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\HuySon\Desktop\PFE\Release</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\AJ55760\Desktop\BioMoDa Release</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -15,7 +15,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2012 10:01:58</publishTime>
     </File>
     <File Include="bin/Clinic.BackEnd.dll">
-      <publishTime>05/19/2016 12:54:28</publishTime>
+      <publishTime>06/16/2016 10:12:34</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -30,10 +30,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>03/02/2015 08:32:26</publishTime>
+      <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>03/02/2015 08:32:26</publishTime>
+      <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -51,7 +51,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/11/2014 09:39:58</publishTime>
     </File>
     <File Include="bin/fr/Clinic.BackEnd.resources.dll">
-      <publishTime>05/19/2016 12:54:30</publishTime>
+      <publishTime>06/16/2016 10:12:35</publishTime>
     </File>
     <File Include="bin/fr/Hopital.SteJustine.BackEnd.resources.dll">
       <publishTime>10/24/2014 20:01:49</publishTime>
@@ -69,7 +69,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/fr/WebApplication.resources.dll">
-      <publishTime>05/19/2016 12:54:38</publishTime>
+      <publishTime>06/16/2016 10:12:37</publishTime>
     </File>
     <File Include="bin/GridMvc.dll">
       <publishTime>07/31/2014 15:25:24</publishTime>
@@ -180,7 +180,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2013 20:54:26</publishTime>
     </File>
     <File Include="bin/WebApplication.dll">
-      <publishTime>05/19/2016 12:54:37</publishTime>
+      <publishTime>06/16/2016 10:12:37</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>07/17/2013 17:03:52</publishTime>
@@ -210,346 +210,349 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/chosen-sprite%402x.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/chosen-sprite.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/chosen.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/dc.css">
-      <publishTime>05/07/2016 19:22:38</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/Gridmvc.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/gridmvc.datepicker.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/gridmvc.datepicker.min.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/PagedList.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/16/2016 00:47:13</publishTime>
     </File>
     <File Include="Content/themes/base/images/animated-overlay.gif">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery-ui.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.accordion.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.all.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.autocomplete.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.base.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.button.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.core.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.datepicker.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.dialog.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.menu.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.progressbar.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.resizable.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.selectable.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.slider.css">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.spinner.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.tabs.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.theme.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/jquery.ui.tooltip.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/animated-overlay.gif">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_flat_0_aaaaaa_40x100.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_flat_75_ffffff_40x100.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_glass_55_fbf9ee_1x400.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_glass_65_ffffff_1x400.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_glass_75_e6e6e6_1x400.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_glass_95_fef1ec_1x400.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-icons_222222_256x240.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-icons_2e83ff_256x240.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-icons_454545_256x240.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-icons_888888_256x240.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/images/ui-icons_cd0a0a_256x240.png">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery-ui.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.accordion.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.autocomplete.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.button.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.core.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.datepicker.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.dialog.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.menu.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.progressbar.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.resizable.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.selectable.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.slider.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.spinner.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.tabs.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.theme.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Content/themes/base/minified/jquery.ui.tooltip.min.css">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Grid.mvc.readme">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="LICENSE.txt">
-      <publishTime>05/07/2016 19:22:36</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>05/07/2016 19:22:39</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/chosen.jquery.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/chosen.jquery.min.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/CrossFilter/crossfilter.js">
-      <publishTime>05/07/2016 19:22:33</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/CrossFilter/crossfilter.min.js">
-      <publishTime>05/07/2016 19:22:33</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/CrossFilter/LICENSE">
-      <publishTime>05/07/2016 19:22:33</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/CrossFilter/README.md">
-      <publishTime>05/07/2016 19:22:31</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/d3.v3.js">
-      <publishTime>05/07/2016 19:22:36</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/d3.v3.min.js">
-      <publishTime>05/07/2016 19:22:35</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/DC/dc.js">
-      <publishTime>05/07/2016 19:22:38</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/DC/dc.min.js">
-      <publishTime>05/07/2016 19:22:38</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/DC/dc.min.js.map">
-      <publishTime>05/07/2016 19:22:37</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/gridmvc.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/gridmvc.lang.fr.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/gridmvc.lang.ru.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/gridmvc.min.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
+    </File>
+    <File Include="Scripts/helpers.js">
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery-ui-1.10.4.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery-ui-1.10.4.min.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jQuery.tmpl.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jQuery.tmpl.min.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.ui.datepicker-fr-CA.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.unobtrusive-ajax.js">
-      <publishTime>05/06/2016 08:22:01</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/knockout-1.2.1.debug.js">
       <publishTime>10/09/2014 18:52:58</publishTime>
@@ -561,64 +564,64 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2014 18:52:58</publishTime>
     </File>
     <File Include="Scripts/MicrosoftMvcAjax.debug.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/MicrosoftMvcAjax.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/MicrosoftMvcValidation.debug.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/MicrosoftMvcValidation.js">
-      <publishTime>05/06/2016 08:22:00</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/modernizr-1.7.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/modernizr-1.7.min.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/respond.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/respond.min.js">
-      <publishTime>05/06/2016 08:22:02</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>05/07/2016 19:22:38</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Analytique/Index.cshtml">
-      <publishTime>05/16/2016 01:51:28</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/Create.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/Delete.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/Details.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/Edit.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/Index.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/_CobbEntryEditor.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/_ConfirmDeleteSampling.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/_CreateOrEditSampling.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/_ListSamplings.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/_SamplingEntryEditor.cshtml">
       <publishTime>10/20/2014 13:16:28</publishTime>
@@ -636,112 +639,112 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2014 17:42:23</publishTime>
     </File>
     <File Include="Views/City/Index.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/City/_List.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/CobbCondition/Index.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/CobbCondition/_List.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/CobbType/Index.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/CobbType/_List.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Corset/Create.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Corset/Delete.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Corset/Details.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Corset/Edit.cshtml">
-      <publishTime>05/06/2016 08:22:03</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Corset/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Corset/_IndexAppointment.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/CorsetType/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/CorsetType/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Diagnosis/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Diagnosis/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Drug/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Drug/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/DrugHistory/Create.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/DrugHistory/Delete.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/DrugHistory/Details.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/DrugHistory/Edit.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/DrugHistory/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/DrugHistory/_IndexAppointment.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/EthnicGroup/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/EthnicGroup/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/FamilyRole/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/FamilyRole/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Group/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Group/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/16/2016 00:47:13</publishTime>
     </File>
     <File Include="Views/LabTest/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/LabTest/_List.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/Create.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/Create_OLD.cshtml">
       <publishTime>10/17/2014 15:01:25</publishTime>
@@ -753,130 +756,130 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2014 21:38:49</publishTime>
     </File>
     <File Include="Views/Participant/Edit.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/16/2016 10:10:15</publishTime>
     </File>
     <File Include="Views/Participant/Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/16/2016 00:47:13</publishTime>
     </File>
     <File Include="Views/Participant/_Appointment.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_ConfirmDeleteCorset.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_ConfirmDeleteDrugHistory.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_CreateOrEditCorset.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_CreateOrEditDrugHistory.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_ListCorsets.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_ListDrugHistories.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Participant/_Sampling.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Result/Delete.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Result/Details.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Result/_Create.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Result/_Edit.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Result/_Index.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Sampling/Create.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Sampling/Delete.cshtml">
-      <publishTime>05/06/2016 08:22:04</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Sampling/Details.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Sampling/Edit.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Sampling/Index.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/SamplingStatus/Index.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/SamplingStatus/_List.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/SamplingType/Index.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/SamplingType/_List.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/DisplayTemplates/DateTime.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Collection.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/DateTime.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/float.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/_Grid.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/16/2016 00:47:13</publishTime>
     </File>
     <File Include="Views/Shared/_GridPager.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/07/2016 20:39:18</publishTime>
+      <publishTime>06/16/2016 00:47:13</publishTime>
     </File>
     <File Include="Views/SurgeryType/Index.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/SurgeryType/_List.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/User/Create.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/User/Delete.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/User/Details.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/User/Edit.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>05/06/2016 08:22:05</publishTime>
+      <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/19/2016 13:52:09</publishTime>
+      <publishTime>06/16/2016 10:12:37</publishTime>
     </File>
   </ItemGroup>
 </Project>
