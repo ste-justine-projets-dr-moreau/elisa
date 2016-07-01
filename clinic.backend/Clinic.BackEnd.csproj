@@ -82,6 +82,7 @@
     <Compile Include="Models\Mapping\LanguageMap.cs" />
     <Compile Include="Models\Mapping\MedicalHistoryMap.cs" />
     <Compile Include="Models\Mapping\CobbTypeMap.cs" />
+    <Compile Include="Models\Mapping\ParticipantIdTraumaMap.cs" />
     <Compile Include="Models\Mapping\SurgeryTypeMap.cs" />
     <Compile Include="Models\MedicalHistory.cs" />
     <Compile Include="Models\Diagnosis.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Models\Mapping\SamplingTypeMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Participant.cs" />
+    <Compile Include="Models\ParticipantIdTrauma.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\EthnicGroup.cs" />

@@ -30,6 +30,9 @@ namespace Clinic.BackEnd.Context
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<LabTest> LabTests { get; set; }
         public DbSet<Participant> Participants { get; set; }
+
+        public DbSet<ParticipantIdTrauma> ParticipantIdTraumas { get; set; }
+
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<ResultFile> ResultFiles { get; set; }
@@ -66,6 +69,7 @@ namespace Clinic.BackEnd.Context
             modelBuilder.Configurations.Add(new LabTestMap());
             modelBuilder.Configurations.Add(new LogMap());
             modelBuilder.Configurations.Add(new ParticipantMap());
+            modelBuilder.Configurations.Add(new ParticipantIdTraumaMap());
             modelBuilder.Configurations.Add(new ProvinceMap());
             modelBuilder.Configurations.Add(new RegionMap());
             modelBuilder.Configurations.Add(new ResultFileMap());

@@ -24,6 +24,22 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             var model = db.Participants.ToList().OrderBy(x => x.Id);
+            var participantsWithTrauma = db.ParticipantIdTraumas.ToList();
+
+            foreach (var item in model) {
+                ParticipantIdTrauma particpantIdTrauma = participantsWithTrauma.SingleOrDefault(e => e.IdParticipantPourTrauma == item.Id);
+
+                if (particpantIdTrauma != null)
+                {
+                    item.IdToDisplay = particpantIdTrauma.TraumaId;
+                }
+                else
+                {
+                    item.IdToDisplay = item.Id.ToString();
+                }
+                
+            }
+
             return View(model);
         }
 
@@ -152,6 +168,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Participant participant = db.Participants
                 .Include(x => x.Appointments)
                 .Include(x => x.Corsets)
@@ -162,6 +179,18 @@ namespace WebApplication.Controllers
             {
                 return HttpNotFound();
             }
+
+            ParticipantIdTrauma participantIdTrauma = db.ParticipantIdTraumas.SingleOrDefault(e => e.IdParticipantPourTrauma == participant.Id);
+
+            if (participantIdTrauma != null)
+            {
+                participant.IdToDisplay = participantIdTrauma.TraumaId;
+            }
+            else
+            {
+                participant.IdToDisplay = participant.Id.ToString();
+            }
+
 
             SetupViewBags(participant);
 
