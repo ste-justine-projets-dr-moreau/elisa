@@ -226,7 +226,7 @@
     <value>Group</value>
   </data>
   <data name="Corset" xml:space="preserve">
-    <value>Corset</value>
+    <value>Brace</value>
   </data>
   <data name="GeneralInfo" xml:space="preserve">
     <value>General Info</value>
@@ -265,13 +265,13 @@
     <value>Doctor</value>
   </data>
   <data name="Drug" xml:space="preserve">
-    <value>Drug</value>
+    <value>Medication</value>
   </data>
   <data name="CobbCondition" xml:space="preserve">
     <value>Condition</value>
   </data>
   <data name="CorsetType" xml:space="preserve">
-    <value>Corset Type</value>
+    <value>Brace Type</value>
   </data>
   <data name="CobbType" xml:space="preserve">
     <value>COBB Type</value>
@@ -308,5 +308,8 @@
   </data>
   <data name="FamilyNotCreated" xml:space="preserve">
     <value>An error occured and the family wasn't created.</value>
+  </data>
+  <data name="BMI" xml:space="preserve">
+    <value>BMI</value>
   </data>
 </root>
