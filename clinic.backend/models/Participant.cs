@@ -61,15 +61,14 @@ namespace Clinic.BackEnd.Models
         public DateTime? SurgeryDate { get; set; }
         [Display(ResourceType = typeof(Resources.Participant), Name = "EthnicPrecision")]
         public String EthnicPrecision { get; set; }
-        //Mohamed
-        //[Display(ResourceType = typeof(Resources.Participant), Name = "FamilyHistory")]
-        //public String FamilyHistory { get; set; }
-        //[Display(ResourceType = typeof(Resources.Participant), Name = "Medication")]
-        //public String Medication { get; set; }
-        //[Display(ResourceType = typeof(Resources.Participant), Name = "DomesticAnimals")]
-        //public String DomesticAnimals { get; set; }
-        //[Display(ResourceType = typeof(Resources.Participant), Name = "SchoolYear")]
-        //public String SchoolYear { get; set; }
+        [Display(ResourceType = typeof(Resources.Participant), Name = "FamilyHistory")]
+        public String FamilyHistory { get; set; }
+        [Display(ResourceType = typeof(Resources.Participant), Name = "Medication")]
+        public String Medication { get; set; }
+        [Display(ResourceType = typeof(Resources.Participant), Name = "DomesticAnimals")]
+        public String DomesticAnimals { get; set; }
+        [Display(ResourceType = typeof(Resources.Participant), Name = "SchoolYear")]
+        public String SchoolYear { get; set; }
         [NotMapped]
         public String IdToDisplay { get; set; }
 

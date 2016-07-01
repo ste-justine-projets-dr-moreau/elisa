@@ -50,7 +50,7 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Height, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">
-                                            @Html.EditorFor(model => model.Height) (cm)
+                                            @Html.EditorFor(model => model.Height)
                                             @Html.ValidationMessageFor(model => model.Height)
                                         </div>
                                     </div>
@@ -58,10 +58,27 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">
-                                            @Html.EditorFor(model => model.Weight) (kg)
+                                            @Html.EditorFor(model => model.Weight)
                                             @Html.ValidationMessageFor(model => model.Weight)
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        @Html.Label(Languages.Global.BMI, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @{
+                                                string BMIValue = String.Empty;
+
+                                                if (Model.Weight.HasValue && Model.Height.HasValue) {
+                                                    BMIValue = (Model.Weight /
+                                                                    (Model.Height * Model.Height))
+                                                                        .ToString();
+                                                }
+                                            }
+                                            @Html.TextBox("BMI", BMIValue)
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.IsPain, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">

@@ -310,4 +310,7 @@
   <data name="Report" xml:space="preserve">
     <value>Rapport</value>
   </data>
+  <data name="BMI" xml:space="preserve">
+    <value>IMC</value>
+  </data>
 </root>
