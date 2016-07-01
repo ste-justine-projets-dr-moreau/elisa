@@ -34,7 +34,7 @@
                 @Html.Grid(Model).Columns(columns =>
                 {
 
-                    columns.Add(c => c.Id)
+                    columns.Add(c => c.IdToDisplay)
                         .Titled(Html.DisplayNameFor(x => x.Id).ToString())
                         .Filterable(true);
 
@@ -66,7 +66,7 @@
                 @Html.Grid(Model).Columns(columns =>
             {
 
-                columns.Add(c => c.Id).Titled(Html.DisplayNameFor(x => x.Id).ToString()).Filterable(true);
+                columns.Add(c => c.IdToDisplay).Titled(Html.DisplayNameFor(x => x.Id).ToString()).Filterable(true);
                 columns.Add(c => c.Family_Id).Titled(Html.DisplayNameFor(x => x.Family.Id).ToString()).Filterable(true);
                 columns.Add(c => c.City.Name).Titled(Html.DisplayNameFor(x => x.City.Name).ToString()).Filterable(true);
                 columns.Add(c => c.DOB).Titled(Html.DisplayNameFor(x => x.DOB).ToString()).Filterable(true).Format("{0:yyyy/MM/dd}");

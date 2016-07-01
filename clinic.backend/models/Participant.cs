@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Clinic.BackEnd.Models;
 using Clinic.BackEnd.Models.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clinic.BackEnd.Models
 {
@@ -69,6 +70,8 @@ namespace Clinic.BackEnd.Models
         //public String DomesticAnimals { get; set; }
         //[Display(ResourceType = typeof(Resources.Participant), Name = "SchoolYear")]
         //public String SchoolYear { get; set; }
+        [NotMapped]
+        public String IdToDisplay { get; set; }
 
 
         public int City_Id { get; set; }        
@@ -102,6 +105,7 @@ namespace Clinic.BackEnd.Models
         public virtual IList<MedicalHistory> MedicalHistories { get; set; }
         public virtual IList<Corset> Corsets { get; set; }
         public virtual IList<DrugHistory> DrugHistories { get; set; }
+        
 
         [Display(ResourceType = typeof(Resources.Participant), Name = "FullName")]
         public string FullName
