@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Clinic.BackEnd.Models.Mapping
@@ -24,6 +23,7 @@ namespace Clinic.BackEnd.Models.Mapping
             Property(t => t.SmokePerDay).HasColumnName("SmokePerDay");
             Property(t => t.Comment).HasColumnName("Comment");
             Property(t => t.Participant_Id).HasColumnName("Participant_Id");
+            Property(t => t.TheBMI).HasColumnName("TheBMI");
            
             // Relationships
             HasRequired(t => t.Participant)
