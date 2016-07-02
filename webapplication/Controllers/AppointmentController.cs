@@ -263,8 +263,20 @@ namespace WebApplication.Controllers
                 appointmentFromDb.Height = appointment.Height;
                 appointmentFromDb.Weight = appointment.Weight;
                 appointmentFromDb.Comment = appointment.Comment;
+
                 appointmentFromDb.Participant_Id = appointment.Participant_Id;
                 appointmentFromDb.User_Id = appointment.User_Id;
+
+                if (appointment.Weight.HasValue && appointment.Height.HasValue)
+                {
+                    if (appointment.Weight.Value > 0 && appointment.Height > 0)
+                    {
+                        decimal? BMIValue = (appointment.Weight /
+                            ((appointment.Height / 100) * (appointment.Height / 100)));
+
+                        appointmentFromDb.TheBMI = BMIValue;
+                    }
+                }
 
 
                 if (appointment.Cobbs != null)

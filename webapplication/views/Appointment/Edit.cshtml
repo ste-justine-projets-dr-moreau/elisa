@@ -1,6 +1,5 @@
 ﻿@using Clinic.BackEnd.Models
-@using WebGrease.Css.Extensions
-@model Clinic.BackEnd.Models.Appointment
+@model Appointment
 
 @{
     ViewBag.Title = @Languages.Global.Edit;
@@ -66,16 +65,7 @@
                                     <div class="form-group">
                                         @Html.Label(Languages.Global.BMI, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">
-                                            @{
-                                                string BMIValue = String.Empty;
-
-                                                if (Model.Weight.HasValue && Model.Height.HasValue) {
-                                                    BMIValue = (Model.Weight /
-                                                                    (Model.Height * Model.Height))
-                                                                        .ToString();
-                                                }
-                                            }
-                                            @Html.TextBox("BMI", BMIValue)
+                                            @Html.EditorFor(model => model.TheBMI)
                                         </div>
                                     </div>
 
