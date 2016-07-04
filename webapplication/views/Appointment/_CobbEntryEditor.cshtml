@@ -10,7 +10,7 @@
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.Appointment_Id)
 
-        @Html.DropDownList("CobbType_Id", new SelectList(ViewBag.CobbTypes, "Id", "Name", Model.CobbType_Id), new { @class="chosen" })
+        @Html.DropDownList("CobbType_Id", new SelectList(ViewBag.CobbTypes, "Id", "Name", Model.CobbType_Id), Languages.Global.Select, new { @class="chosen" })
         @Html.ValidationMessageFor(model => model.CobbType)
     </td>
     <td class="grid-cell" >
