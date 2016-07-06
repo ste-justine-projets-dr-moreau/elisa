@@ -538,6 +538,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Participant Age.
+        /// </summary>
+        public static string ParticipantAgeAtAppointment {
+            get {
+                return ResourceManager.GetString("ParticipantAgeAtAppointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report.
         /// </summary>
         public static string Report {

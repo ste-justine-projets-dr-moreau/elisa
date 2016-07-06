@@ -312,4 +312,7 @@
   <data name="BMI" xml:space="preserve">
     <value>BMI</value>
   </data>
+  <data name="ParticipantAgeAtAppointment" xml:space="preserve">
+    <value>Participant Age</value>
+  </data>
 </root>

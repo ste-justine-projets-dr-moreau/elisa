@@ -90,6 +90,17 @@ namespace WebApplication.Controllers
                 .Include(z => z.Participant)
                 .First(x => x.Id == id);
 
+            int? participantAgeAtAppointment = null;
+
+            if (appointment.Date.HasValue && appointment.Participant.DOB.HasValue)
+            {
+                participantAgeAtAppointment = appointment.Date.Value.Year
+                                                    - appointment.Participant.DOB.Value.Year;
+            }
+
+
+
+            ViewBag.ParticipantAgeAtAppointment = participantAgeAtAppointment;
             ViewBag.Participant_Id = new SelectList(db.Participants, "Id", "FirstName", appointment.Participant_Id);
             ViewBag.User_Id = new SelectList(db.Users, "Id", "FirstName", appointment.User_Id);
             ViewBag.CobbTypes = db.CobbTypes;
@@ -97,6 +108,8 @@ namespace WebApplication.Controllers
                 Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
             ViewBag.SamplingStatus_Id = new SelectList(db.SamplingStatus, "Id",
                 Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+
+
 
             if (Session["Language"].ToString().ToLower() == "en")
             {
