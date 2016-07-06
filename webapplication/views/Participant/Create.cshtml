@@ -120,6 +120,40 @@
                                     @Html.ValidationMessageFor(model => model.Doctor_Id)
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FamilyHistory, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FamilyHistory)
+
+                                    @Html.ValidationMessageFor(model => model.FamilyHistory)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Medication, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Medication)
+                                    @Html.ValidationMessageFor(model => model.Medication)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DomesticAnimals, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.DomesticAnimals)
+                                    @Html.ValidationMessageFor(model => model.DomesticAnimals)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SchoolYear, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SchoolYear)
+                                    @Html.ValidationMessageFor(model => model.SchoolYear)
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
