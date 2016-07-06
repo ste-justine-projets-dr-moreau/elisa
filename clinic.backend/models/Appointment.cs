@@ -41,7 +41,7 @@ namespace Clinic.BackEnd.Models
         public int? SmokePerDay { get; set; } 
 
         [Display(ResourceType = typeof(Resources.Appointment), Name = "Risser")]
-        public int? Risser { get; set; }
+        public decimal? Risser { get; set; }
 
         [DataType(DataType.MultilineText)]
         [Display(ResourceType = typeof(Resources.Appointment), Name = "Comment")]
