@@ -1,5 +1,6 @@
 ﻿using Clinic.BackEnd.Context;
 using Clinic.BackEnd.Models;
+using MathNet.Numerics.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             ViewBag.AverageCobbComputed = false;
+            ViewBag.descriptivesStatsComputed = false;
 
             return View();
         }
@@ -87,6 +89,28 @@ namespace WebApplication.Controllers
                 ViewBag.ParticipantCobbs = resultToDisplay.ToList();
 
             }
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ComputeDescriptivesStats()
+        {
+            var particpantAges = db.Participants
+                        .Where(p => p.DOB.HasValue)
+                        .Select(p => (double)(DateTime.Now.Year - p.DOB.Value.Year));
+
+            var statistics = new DescriptiveStatistics(particpantAges);
+
+            ViewBag.statMin = statistics.Minimum;
+            ViewBag.statMax = statistics.Maximum;
+            ViewBag.statMedian = Statistics.Median(particpantAges);
+            ViewBag.statMean = statistics.Mean;
+            ViewBag.statStandardDeviation = statistics.StandardDeviation;
+            ViewBag.statVariance = statistics.Variance;
+
+            ViewBag.AverageCobbComputed = false;
+            ViewBag.descriptivesStatsComputed = true;
 
             return View("Index");
         }
