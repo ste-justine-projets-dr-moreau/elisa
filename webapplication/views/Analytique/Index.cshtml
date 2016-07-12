@@ -2,7 +2,21 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+    bool averageCobbComputed = (bool)ViewBag.AverageCobbComputed;
+    double? averageCobb = (double?)ViewBag.AverageCobb;
+
+    bool descriptivesStatsComputed = (bool)ViewBag.DescriptivesStatsComputed;
+    double? statMedian = (double?)ViewBag.StatMedian;
+    double? statMean = (double?)ViewBag.StatMean;
+    double? statMin = (double?)ViewBag.StatMin;
+    double? statMax = (double?)ViewBag.StatMax;
+    double? statStandardDeviation = (double?)ViewBag.StatStandardDeviation;
+    double? statVariance = (double?)ViewBag.StatVariance;
 }
+
 
 <br />
 <br />
@@ -130,10 +144,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                @{
-                    bool averageCobbComputed = (bool)ViewBag.AverageCobbComputed;
-                    double? averageCobb = (double?)ViewBag.AverageCobb;
-                }
+
 
                 @if (averageCobbComputed)
                 {
@@ -161,6 +172,100 @@
                 }
             </div>
         </div>
+        }
+    </div>
+
+    <div>
+        @using (Html.BeginForm("ComputeDescriptivesStats", "Analytique", FormMethod.Post))
+        {
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Statistiques descriptives</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Source de donnée
+            </div>
+            <div class="col-md-10">
+                <select id="lst-datasource-stats">
+                    <option value="0">Choisir une source de donnée ...</option>
+                    <option value="1">Participant</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Donnée
+            </div>
+            <div class="col-md-10">
+                <select id="lst-datasource-stats">
+                    <option value="0">Choisir une donnée ...</option>
+                    <option value="1">Âge</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button id="btn-" type="submit">Générer statistiques descriptives</button>
+            </div>
+        </div>
+        }
+
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+
+        @if (descriptivesStatsComputed)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    Minimum
+                </div>
+                <div class="col-md-10">
+                    @statMin
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Maximum
+                </div>
+                <div class="col-md-10">
+                    @statMax
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Médian
+                </div>
+                <div class="col-md-10">
+                    @statMedian
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Moyenne
+                </div>
+                <div class="col-md-10">
+                    @statMean
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Écart-type
+                </div>
+                <div class="col-md-10">
+                    @statStandardDeviation
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Variance
+                </div>
+                <div class="col-md-10">
+                    @statVariance
+                </div>
+            </div>
         }
     </div>
 
