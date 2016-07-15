@@ -388,6 +388,28 @@
 
                 <div class="Container">
                     <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                @Languages.Global.Laboratory
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td class="col-md-2">
+                                        @Html.LabelFor(model => model.FunctionalGroup, new { @class = "control-label" })
+                                    </td>
+                                    <td class="col-md-2">
+                                        <div>
+                                            @*@Html.EditorFor(model => model.FunctionalGroup)*@
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Container">
+                    <div class="col-xs-12">
                         <div class=" panel panel-default">
                             <div class="panel-heading">
                                 @Html.LabelFor(model => model.Comment)

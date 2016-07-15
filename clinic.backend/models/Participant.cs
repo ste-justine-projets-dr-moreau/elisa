@@ -69,6 +69,8 @@ namespace Clinic.BackEnd.Models
         public String DomesticAnimals { get; set; }
         [Display(ResourceType = typeof(Resources.Participant), Name = "SchoolYear")]
         public String SchoolYear { get; set; }
+        [Display(ResourceType = typeof(Resources.Participant), Name = "FunctionalGroup")]
+        public double? FunctionalGroup { get; set; }
         [NotMapped]
         public String IdToDisplay { get; set; }
 

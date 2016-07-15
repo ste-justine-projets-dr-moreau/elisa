@@ -204,6 +204,16 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Participant participant, int[] diagnosesForParticipant, int[] medicalhistoriesForParticipant)
         {
+            // Bug fix
+            // Pour l'edition avec NULL comme "Family role".
+            // Le champ "Family role" est Nullable, mais le ModelState detecte une erreur meme si la valeur est NULL (ne devrait pas).
+            if (participant.FamilyRole_Id == null)
+            {
+                participant.FamilyRole = null;
+                ModelState.Remove("FamilyRole.Id");
+            }
+
+
             if (ModelState.IsValid)
             {
                 AddNewEntityIfNecessary(participant);
