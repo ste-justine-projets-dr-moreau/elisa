@@ -143,6 +143,8 @@
                                         @Html.LabelFor(model => model.FamilyRole.Name, new { @class = "control-label col-md-4" })
                                         <div class="col-md-8">
                                             @Html.DropDownList("FamilyRole_Id", String.Empty)
+                                            @Html.Hidden("FamilyRole.Name")
+                                            @Html.Hidden("FamilyRole.Id")
                                             @Html.ValidationMessageFor(model => model.FamilyRole_Id)
                                         </div>
                                     </div>
@@ -495,7 +497,7 @@
                     if (data.success) {
                         $("#addCorsetDialog").dialog("close");
                         $("#listCorset").html(data.html);
-                            
+
 
                     } else {
                         alert(data.message);
@@ -591,7 +593,7 @@
                 if (data.success) {
                     $("#addDrugHistoryDialog").dialog("close");
                     $("#listDrugHistory").html(data.html);
-                            
+
 
                 } else {
                     alert(data.message);
@@ -657,11 +659,12 @@
             }
         });
         });
-            
+
             //General
 
             setupChosenSelectWithAdd("#City_Id", "City.Name", "City.Id", "@Languages.Global.OneOption", "Press Enter to add new entry");
             setupChosenSelectWithAdd("#Family_Id", "Family.Name", "Family.Id", "@Languages.Global.OneOption", "Press Enter to add new entry");
+            setupChosenSelectWithAdd("#FamilyRole_Id", "FamilyRole.Name", "FamilyRole.Id", "@Languages.Global.OneOption", "Press Enter to add new entry");
 
             $("#tabs").tabs();
             $("#DiagnosesForParticipant").chosen({
@@ -684,11 +687,11 @@
                 width: "50%",
                 disable_search: true
             });
-            $("#FamilyRole_Id").chosen({
+            @*$("#FamilyRole_Id").chosen({
                 placeholder_text_single: "@Languages.Global.OneOption",
                 width: "50%",
                 disable_search: true
-            });
+            });*@
             $("#SurgeryType_Id").chosen({
                 placeholder_text_single: "@Languages.Global.OneOption",
                 width: "50%",

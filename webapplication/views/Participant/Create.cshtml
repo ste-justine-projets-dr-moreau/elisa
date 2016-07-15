@@ -110,6 +110,7 @@
                                 @Html.LabelFor(model => model.FamilyRole.Name, new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
                                     @Html.DropDownList("FamilyRole_Id", String.Empty)
+                                    @Html.Hidden("FamilyRole.Name")
                                     @Html.ValidationMessageFor(model => model.FamilyRole_Id)
                                 </div>
                             </div>
@@ -386,12 +387,15 @@
 
         setupChosenSelectWithAdd("#City_Id", "City.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
         setupChosenSelectWithAdd("#Family_Id", "Family.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
+        setupChosenSelectWithAdd("#FamilyRole_Id", "FamilyRole.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
+        //setupChosenSelectWithAdd("#DiagnosesForParticipant", "FamilyRole.Name", "", "@Languages.Global.SomeOptions", "Press Enter to add new entry", true);
 
 
         $("#DiagnosesForParticipant").chosen({
             placeholder_text_multiple: "@Languages.Global.SomeOptions",
             width: "50%"
         });
+
         $("#MedicalHistoriesForParticipant").chosen({
             placeholder_text_multiple: "@Languages.Global.SomeOptions",
             width: "50%",
@@ -408,11 +412,7 @@
             width: "50%",
             disable_search: true
         });
-        $("#FamilyRole_Id").chosen({
-            placeholder_text_single: "@Languages.Global.OneOption",
-            width: "50%",
-            disable_search: true
-        });
+
         $("#SurgeryType_Id").chosen({
             width: "50%",
             disable_search: true,

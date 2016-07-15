@@ -512,6 +512,7 @@ namespace WebApplication.Controllers
         {
             bool cityMustBeAdded = participant.City_Id < 1;
             bool familyMustBeAdded = participant.Family_Id < 1;
+            bool familyRoleMustBeAdded = participant.FamilyRole_Id < 1;
 
             if (cityMustBeAdded)
             {
@@ -543,6 +544,20 @@ namespace WebApplication.Controllers
 
                 participant.Family = newFamily;
                 participant.Family_Id = newFamily.Id;
+            }
+
+            if (familyRoleMustBeAdded)
+            {
+                FamilyRole newFamilyRole = new FamilyRole
+                {
+                    Name = participant.FamilyRole.Name,
+                    NameFr = participant.FamilyRole.Name
+                };
+                db.FamilRoles.Add(newFamilyRole);
+                db.SaveChanges();
+
+                participant.FamilyRole = newFamilyRole;
+                participant.FamilyRole_Id = newFamilyRole.Id;
             }
         }
 
