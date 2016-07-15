@@ -204,4 +204,10 @@
   <data name="Telephone" xml:space="preserve">
     <value>Téléphone</value>
   </data>
+  <data name="FunctionalGroup" xml:space="preserve">
+    <value>Groupe fonctionnel</value>
+  </data>
+  <data name="Laboratory" xml:space="preserve">
+    <value>Laboratoire</value>
+  </data>
 </root>

@@ -216,4 +216,10 @@
   <data name="SchoolYear" xml:space="preserve">
     <value>School Year</value>
   </data>
+  <data name="FunctionalGroup" xml:space="preserve">
+    <value>Functional Group</value>
+  </data>
+  <data name="Laboratory" xml:space="preserve">
+    <value>Laboratory</value>
+  </data>
 </root>

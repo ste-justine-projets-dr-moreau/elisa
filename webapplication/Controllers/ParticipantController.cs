@@ -204,6 +204,16 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Participant participant, int[] diagnosesForParticipant, int[] medicalhistoriesForParticipant)
         {
+            // Bug fix
+            // Pour l'edition avec NULL comme "Family role".
+            // Le champ "Family role" est Nullable, mais le ModelState detecte une erreur meme si la valeur est NULL (ne devrait pas).
+            if (participant.FamilyRole_Id == null)
+            {
+                participant.FamilyRole = null;
+                ModelState.Remove("FamilyRole.Id");
+            }
+
+
             if (ModelState.IsValid)
             {
                 AddNewEntityIfNecessary(participant);
@@ -418,8 +428,22 @@ namespace WebApplication.Controllers
         //Show Appointment
         public ActionResult ShowAppointment(int id)
         {
-            var results = db.Appointments.Include(a => a.User).Where(a => a.Participant_Id == id).OrderBy(a => a.Date);
-            return PartialView("_Appointment", results.ToList());
+            var results = db.Appointments.Include(a => a.User).Where(a => a.Participant_Id == id).OrderBy(a => a.Date).ToList();
+            int? participantAgeAtAppointment = null;
+
+
+            foreach (var appointment in results)
+            {
+                if (appointment.Date.HasValue && appointment.Participant.DOB.HasValue)
+                {
+                    participantAgeAtAppointment = appointment.Date.Value.Year
+                                                        - appointment.Participant.DOB.Value.Year;
+
+                    appointment.ParticipantAgeAtAppointment = participantAgeAtAppointment;
+                }
+            }
+
+            return PartialView("_Appointment", results);
         }
 
         #endregion
@@ -512,6 +536,7 @@ namespace WebApplication.Controllers
         {
             bool cityMustBeAdded = participant.City_Id < 1;
             bool familyMustBeAdded = participant.Family_Id < 1;
+            bool familyRoleMustBeAdded = participant.FamilyRole_Id < 1;
 
             if (cityMustBeAdded)
             {
@@ -543,6 +568,20 @@ namespace WebApplication.Controllers
 
                 participant.Family = newFamily;
                 participant.Family_Id = newFamily.Id;
+            }
+
+            if (familyRoleMustBeAdded)
+            {
+                FamilyRole newFamilyRole = new FamilyRole
+                {
+                    Name = participant.FamilyRole.Name,
+                    NameFr = participant.FamilyRole.Name
+                };
+                db.FamilRoles.Add(newFamilyRole);
+                db.SaveChanges();
+
+                participant.FamilyRole = newFamilyRole;
+                participant.FamilyRole_Id = newFamilyRole.Id;
             }
         }
 

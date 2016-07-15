@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Clinic.BackEnd.Models.Base;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clinic.BackEnd.Models
 {
@@ -48,7 +48,10 @@ namespace Clinic.BackEnd.Models
         public string Comment { get; set; }
 
         public decimal? TheBMI { get; set; }
-        
+
+        [NotMapped]
+        public int? ParticipantAgeAtAppointment { get; set; }
+
         public int Participant_Id { get; set; }
         public int User_Id { get; set; }       
  
