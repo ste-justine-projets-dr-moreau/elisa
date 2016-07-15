@@ -428,8 +428,22 @@ namespace WebApplication.Controllers
         //Show Appointment
         public ActionResult ShowAppointment(int id)
         {
-            var results = db.Appointments.Include(a => a.User).Where(a => a.Participant_Id == id).OrderBy(a => a.Date);
-            return PartialView("_Appointment", results.ToList());
+            var results = db.Appointments.Include(a => a.User).Where(a => a.Participant_Id == id).OrderBy(a => a.Date).ToList();
+            int? participantAgeAtAppointment = null;
+
+
+            foreach (var appointment in results)
+            {
+                if (appointment.Date.HasValue && appointment.Participant.DOB.HasValue)
+                {
+                    participantAgeAtAppointment = appointment.Date.Value.Year
+                                                        - appointment.Participant.DOB.Value.Year;
+
+                    appointment.ParticipantAgeAtAppointment = participantAgeAtAppointment;
+                }
+            }
+
+            return PartialView("_Appointment", results);
         }
 
         #endregion

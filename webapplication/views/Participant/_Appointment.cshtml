@@ -12,12 +12,22 @@
                 </th>
                 <th class="grid-header">
                     <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayName(Languages.Global.ParticipantAgeAtAppointment)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
                         @Html.DisplayNameFor(model => model.Height)
                     </div>
                 </th>
                 <th class="grid-header">
                     <div class="grid-header-title" style="color: #428bca">
                         @Html.DisplayNameFor(model => model.Weight)
+                    </div>
+                </th>
+                <th class="grid-header">
+                    <div class="grid-header-title" style="color: #428bca">
+                        @Html.DisplayName(Languages.Global.BMI)
                     </div>
                 </th>
                 <th class="grid-header">
@@ -44,10 +54,16 @@
                         @Html.DisplayFor(modelItem => item.Date)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.ParticipantAgeAtAppointment)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Height)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TheBMI)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.User.FullName)
