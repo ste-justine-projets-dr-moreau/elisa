@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using Clinic.BackEnd.Context;
 using Clinic.BackEnd.Models;
 using WebApplication.Helpers;
-
+using System.Collections.Generic;
+using System;
 
 namespace WebApplication.Controllers
 {
@@ -83,11 +84,11 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Participant participant, int[] diagnosesForParticipant, int[] medicalhistoriesForParticipant)
+        public async Task<ActionResult> Create(Participant participant, int[] diagnosesForParticipant, string diagnosesNamesForParticipant, int[] medicalhistoriesForParticipant)
         {
             if (ModelState.IsValid)
             {
-                AddNewEntityIfNecessary(participant);
+                AddNewEntityIfNecessary(participant, diagnosesForParticipant, diagnosesNamesForParticipant);
 
                 if (diagnosesForParticipant != null)
                 {
@@ -202,7 +203,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Participant participant, int[] diagnosesForParticipant, int[] medicalhistoriesForParticipant)
+        public async Task<ActionResult> Edit(Participant participant, int[] diagnosesForParticipant, string diagnosesNamesForParticipant, int[] medicalhistoriesForParticipant)
         {
             // Bug fix
             // Pour l'edition avec NULL comme "Family role".
@@ -216,7 +217,7 @@ namespace WebApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                AddNewEntityIfNecessary(participant);
+                AddNewEntityIfNecessary(participant, diagnosesForParticipant, diagnosesNamesForParticipant);
 
                 db.Entry(participant).State = EntityState.Modified;
                 await db.SaveChangesAsync();
@@ -532,11 +533,14 @@ namespace WebApplication.Controllers
                 });
         }
 
-        private void AddNewEntityIfNecessary(Participant participant)
+        private void AddNewEntityIfNecessary(Participant participant, int[] diagnosesForParticipant, string diagnosesNamesForParticipant)
         {
             bool cityMustBeAdded = participant.City_Id < 1;
             bool familyMustBeAdded = participant.Family_Id < 1;
             bool familyRoleMustBeAdded = participant.FamilyRole_Id < 1;
+            bool diagnosesMustBeAdded = diagnosesForParticipant
+                                            .Where(d => d < 1)  // Detecter les IDs negatifs (les diagnostiques a ajouter)
+                                            .Count() > 0;       // Il en existe.
 
             if (cityMustBeAdded)
             {
@@ -582,6 +586,49 @@ namespace WebApplication.Controllers
 
                 participant.FamilyRole = newFamilyRole;
                 participant.FamilyRole_Id = newFamilyRole.Id;
+            }
+
+            if (diagnosesMustBeAdded)
+            {
+                Diagnosis diagnosis = null;
+                var newDiagnosesId = diagnosesForParticipant.Where(d => d < 1).ToArray();
+                int[] newDiagnosesIndex = new int[newDiagnosesId.Count()];
+                int index;
+                int currentDiagnoseIdToChange = 0;
+
+                // Localiser les index dans la liste des IDs diagnostiques originals
+                for (int i = 0; i<newDiagnosesId.Count(); i++)
+                {
+                    index = Array.IndexOf(diagnosesForParticipant, newDiagnosesId[i]);
+                    newDiagnosesIndex[i] = index;
+                }
+
+                String[] newDiagnosesNames = diagnosesNamesForParticipant
+                                                .Split(new string[] { "^^^"}, StringSplitOptions.None);
+
+                foreach (var diagnose in newDiagnosesNames)
+                {
+                    diagnosis = new Diagnosis
+                    {
+                        Name = diagnose,
+                        NameFr = diagnose,
+                        IsActive = true
+                    };
+
+                    // Ajouter chaque nouvel diagnostique en BD
+                    db.Diagnoses.Add(diagnosis);
+                    db.SaveChanges();
+
+                    // Mettre-a-jour la liste des IDs disgnotisque originals :
+                    //      1, 2, 0, -1, -2, 3  =>
+                    //      1, 2, 4,  5,  6, 3
+                     
+                    diagnosesForParticipant
+                        [newDiagnosesIndex[currentDiagnoseIdToChange]] = diagnosis.Id;
+
+                    currentDiagnoseIdToChange++;
+                }
+
             }
         }
 

@@ -215,6 +215,7 @@
                                 @Html.LabelFor(model => model.Diagnoses, new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
                                     @Html.ListBox("DiagnosesForParticipant", (List<SelectListItem>)ViewBag.Diagnoses, String.Empty)
+                                    @Html.Hidden("DiagnosesNamesForParticipant")
                                     @Html.ValidationMessageFor(model => model.Diagnoses)
                                 </div>
                             </div>
@@ -410,13 +411,7 @@
         setupChosenSelectWithAdd("#City_Id", "City.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
         setupChosenSelectWithAdd("#Family_Id", "Family.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
         setupChosenSelectWithAdd("#FamilyRole_Id", "FamilyRole.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
-        //setupChosenSelectWithAdd("#DiagnosesForParticipant", "FamilyRole.Name", "", "@Languages.Global.SomeOptions", "Press Enter to add new entry", true);
-
-
-        $("#DiagnosesForParticipant").chosen({
-            placeholder_text_multiple: "@Languages.Global.SomeOptions",
-            width: "50%"
-        });
+        setupChosenSelectWithAdd("#DiagnosesForParticipant", "DiagnosesNamesForParticipant", "", "@Languages.Global.SomeOptions", "Press Enter to add new entry", true);
 
         $("#MedicalHistoriesForParticipant").chosen({
             placeholder_text_multiple: "@Languages.Global.SomeOptions",

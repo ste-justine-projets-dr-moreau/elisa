@@ -4,7 +4,14 @@ function setupChosenSelectWithAdd(select, hiddenInputName, hiddenInputId, text, 
     // La solution a été inspirée de ce lien :
     // http://stackoverflow.com/questions/18706735/adding-text-other-than-the-selected-text-options-to-the-select-with-the-chosen-p
 
-    var targetSelect, targetChosen, options;
+
+    var targetSelect,
+        targetChosen,
+        options,
+        userInput,
+        idCounter = 0,
+        addingItem = false;
+
 
     targetSelect = $(select);
 
@@ -22,13 +29,37 @@ function setupChosenSelectWithAdd(select, hiddenInputName, hiddenInputId, text, 
 
     targetSelect.chosen(options);
     targetChosen = targetSelect.data("chosen");
-    targetChosen.dropdown.find('input').on('keyup', function (e) {
+
+
+    if (isMultiple) {
+        userInput = targetSelect
+                        .parent()
+                        .find("input");
+    } else {
+        userInput = targetChosen
+                        .dropdown
+                        .find('input');
+                        
+    }
+
+    userInput.on('keyup', function (e) {
 
         // if we hit Enter and the results list is empty (no matches) add the option
-        //if (e.which == 13 && targetChosen.dropdown.find('li.no-results').length > 0) {
-        if (e.which == 13) {
-            var option = $("<option>").val(0).text(this.value);
-            targetSelect.prepend(option);
+        if (e.which == 13 && targetChosen.dropdown.find('li.no-results').length > 0) {
+
+            if (isMultiple) { idCounter--; }
+
+            var option = $("<option>")
+                                .val(idCounter)
+                                .text(this.value);
+
+            if (isMultiple) {
+                targetSelect.append(option);
+                addingItem = true;
+            } else {
+                targetSelect.prepend(option);
+            }
+            
             targetSelect.find(option).prop('selected', true);
 
             targetSelect.trigger("chosen:updated");
@@ -36,11 +67,48 @@ function setupChosenSelectWithAdd(select, hiddenInputName, hiddenInputId, text, 
         }
 
     });
+
     targetSelect.on('change', function () {
-        var nameSelected = targetSelect.find(":selected").text();
-        var idSelected = targetSelect.find(":selected").val();
-        $("[name='" + hiddenInputName + "']").val(nameSelected);
-        $("[name='" + hiddenInputId + "']").val(idSelected);
+
+        var hiddenInput = $("[name='" + hiddenInputName + "']");
+        var valueForHiddenInputName = "";
+
+        var nameSelected;
+        var idSelected;
+
+        if (isMultiple) {
+            nameSelected = targetSelect.find(":selected").last().text();
+            idSelected = targetSelect.find(":selected").last().val();
+        } else {
+            nameSelected = targetSelect.find(":selected").text();
+            idSelected = targetSelect.find(":selected").val();
+        }
+
+
+        var currentValueForHiddenInputName = hiddenInput.val();
+
+        if (isMultiple) {
+
+            if (addingItem) {
+                if (currentValueForHiddenInputName && currentValueForHiddenInputName != "") {
+                    valueForHiddenInputName = currentValueForHiddenInputName
+                                                + "^^^"
+                                                + nameSelected;
+                } else {
+                    valueForHiddenInputName = nameSelected;
+                }
+
+                hiddenInput.val(valueForHiddenInputName);
+                addingItem = false;
+            }
+
+        } else {
+            hiddenInput.val(nameSelected);
+            $("[name='" + hiddenInputId + "']").val(idSelected);
+        }
+        
+        
+
     });
-    console.log(targetChosen.dropdown.find('input'));
+    
 }
