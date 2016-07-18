@@ -203,7 +203,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Participant participant, int[] diagnosesForParticipant, int[] medicalhistoriesForParticipant)
+        public async Task<ActionResult> Edit(Participant participant, int[] diagnosesForParticipant, string diagnosesNamesForParticipant, int[] medicalhistoriesForParticipant)
         {
             // Bug fix
             // Pour l'edition avec NULL comme "Family role".
@@ -217,7 +217,7 @@ namespace WebApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                AddNewEntityIfNecessary(participant, diagnosesForParticipant, String.Empty);
+                AddNewEntityIfNecessary(participant, diagnosesForParticipant, diagnosesNamesForParticipant);
 
                 db.Entry(participant).State = EntityState.Modified;
                 await db.SaveChangesAsync();
