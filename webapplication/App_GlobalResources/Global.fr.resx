@@ -316,4 +316,7 @@
   <data name="ParticipantAgeAtAppointment" xml:space="preserve">
     <value>Âge du participant</value>
   </data>
+  <data name="SecondEthnicGroup" xml:space="preserve">
+    <value>Second ethnie</value>
+  </data>
 </root>

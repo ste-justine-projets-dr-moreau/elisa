@@ -54,7 +54,10 @@ namespace WebApplication.Controllers
             ViewBag.Doctor_Id = new SelectList(db.Users.Include(x => x.Roles).Where(x => x.Roles.Any(j => j.Name == "Doctor")), "Id", "FullName");
             ViewBag.Group_Id = new SelectList(db.Groups.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
             ViewBag.FamilyRole_Id = new SelectList(db.FamilRoles.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+
             ViewBag.EthnicGroup_Id = new SelectList(db.EthnicGroups.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+            ViewBag.SecondEthnicGroup_Id = new SelectList(db.EthnicGroups.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
+
             ViewBag.SurgeryType_Id = new SelectList(db.SurgeryTypes.OrderBy(x => x.Name), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
 
             var diagnoses = db.Diagnoses.ToList().Select(diagnosis => new SelectListItem
@@ -501,7 +504,10 @@ namespace WebApplication.Controllers
             ViewBag.Group_Id = new SelectList(db.Groups.OrderBy(x => x.NameFr), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr", participant.Group_Id);
 
             ViewBag.FamilyRole_Id = new SelectList(db.FamilRoles.OrderBy(x => x.NameFr), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr", participant.FamilyRole_Id);
+
             ViewBag.EthnicGroup_Id = new SelectList(db.EthnicGroups.OrderBy(x => x.NameFr), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr", participant.EthnicGroup_Id);
+            ViewBag.SecondEthnicGroup_Id = new SelectList(db.EthnicGroups.OrderBy(x => x.NameFr), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr", participant.SecondEthnicGroup_Id);
+
             ViewBag.SurgeryType_Id = new SelectList(db.SurgeryTypes.OrderBy(x => x.NameFr), "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr", participant.SurgeryType_Id);
             ViewBag.CorsetType_Id = new SelectList(db.CorsetTypes, "Id", Session["Language"].ToString().ToLower() == "en" ? "Name" : "NameFr");
             var diagnoses = db.Diagnoses.ToList().Select(diagnosis => new SelectListItem
@@ -538,7 +544,8 @@ namespace WebApplication.Controllers
             bool cityMustBeAdded = participant.City_Id < 1;
             bool familyMustBeAdded = participant.Family_Id < 1;
             bool familyRoleMustBeAdded = participant.FamilyRole_Id < 1;
-            bool diagnosesMustBeAdded = diagnosesForParticipant
+            bool diagnosesMustBeAdded = diagnosesForParticipant != null &&
+                                        diagnosesForParticipant
                                             .Where(d => d < 1)  // Detecter les IDs negatifs (les diagnostiques a ajouter)
                                             .Count() > 0;       // Il en existe.
 

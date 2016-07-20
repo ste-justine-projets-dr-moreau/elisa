@@ -87,6 +87,7 @@ namespace Clinic.BackEnd.Models
        public IList<Family> Families { get; set; }
         public int? FamilyRole_Id { get; set; }
         public int? EthnicGroup_Id { get; set; }
+        public int? SecondEthnicGroup_Id { get; set; }
          [Display(ResourceType = typeof(Resources.Participant), Name = "SurgeryType")]
         public int? SurgeryType_Id { get; set; }
 
@@ -96,7 +97,11 @@ namespace Clinic.BackEnd.Models
         public virtual User Creator { get; set; }
         public virtual Family Family { get; set; }
         public virtual FamilyRole FamilyRole { get; set; }
+
+
+        [ForeignKey("EthnicGroup_Id")]
         public virtual EthnicGroup EthnicGroup { get; set; }
+
         public virtual SurgeryType SurgeryType { get; set; }
 
         public virtual IList<Appointment> Appointments { get; set; }
