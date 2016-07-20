@@ -23,17 +23,15 @@ namespace WebApplication.Controllers
             Language english = _db.Languages.Single(l => l.Id == 1);
             Language french = _db.Languages.Single(l => l.Id == 2);
 
+            english.Name = "en";
+            french.Name = "fr";
 
             if (lang == "fr")
             {
-                english.Name = "Anglais";
-                french.Name = "Français";
                 language = french;
             }
             else // lang == "en"
             {
-                english.Name = "English";
-                french.Name = "French";
                 language = english;
             }
 
