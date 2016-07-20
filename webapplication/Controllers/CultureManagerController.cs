@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Profile;
 using Clinic.BackEnd.Context;
+using Clinic.BackEnd.Models;
 
 namespace WebApplication.Controllers
 {
@@ -22,8 +19,25 @@ namespace WebApplication.Controllers
         {
             var cultureInfo = new CultureInfo(lang);
             var user = _db.Users.First(x => x.NT == User.Identity.Name);
+            Language language = null;
+            Language english = _db.Languages.Single(l => l.Id == 1);
+            Language french = _db.Languages.Single(l => l.Id == 2);
 
-            user.Language.Name = cultureInfo.Name;
+
+            if (lang == "fr")
+            {
+                english.Name = "Anglais";
+                french.Name = "Français";
+                language = french;
+            }
+            else // lang == "en"
+            {
+                english.Name = "English";
+                french.Name = "French";
+                language = english;
+            }
+
+            user.Language = language;
             _db.SaveChanges(User.Identity.Name);
 
             Session["Language"] = cultureInfo.Name;
