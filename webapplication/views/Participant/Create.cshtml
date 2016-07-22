@@ -99,6 +99,14 @@
                             </div>
 
                             <div class="form-group">
+                                @Html.Label(Languages.Global.SecondEthnicGroup, new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("SecondEthnicGroup_Id", String.Empty)
+                                    @Html.ValidationMessageFor(model => model.SecondEthnicGroup_Id)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.Family.Name, new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
                                     @Html.DropDownList("Family_Id", String.Empty)
@@ -420,6 +428,11 @@
         });
 
         $("#EthnicGroup_Id").chosen({
+            placeholder_text_single: "@Languages.Global.OneOption",
+            width: "50%",
+            disable_search: true
+        });
+        $("#SecondEthnicGroup_Id").chosen({
             placeholder_text_single: "@Languages.Global.OneOption",
             width: "50%",
             disable_search: true

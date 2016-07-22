@@ -76,7 +76,7 @@ namespace WebApplication.Controllers
                 labtest.Name = model.Name;
                 labtest.NameFr = model.NameFr;
                 labtest.IsActive = model.IsActive;
-                labtest.SortOrder = model.SortOrder;
+                //labtest.SortOrder = model.SortOrder;
                 db.SaveChanges(User.Identity.Name);
             }
             else

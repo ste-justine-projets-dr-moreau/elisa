@@ -58,6 +58,7 @@ namespace Clinic.BackEnd.Models.Mapping
             Property(t => t.FamilyRole_Id).HasColumnName("FamilyRole_Id");
             Property(t => t.EthnicGroup_Id).HasColumnName("EthnicGroup_Id");
             Property(t => t.SurgeryType_Id).HasColumnName("SurgeryType_Id");
+            Property(t => t.SecondEthnicGroup_Id).HasColumnName("SecondEthnicGroup_Id");
             
             
            
@@ -90,7 +91,7 @@ namespace Clinic.BackEnd.Models.Mapping
             HasOptional(t => t.EthnicGroup)
                 .WithMany(t => t.Participants)
                 .HasForeignKey(d => d.EthnicGroup_Id);
-            
+
             HasMany(x => x.Diagnoses)
                 .WithMany(x => x.Participants);
 

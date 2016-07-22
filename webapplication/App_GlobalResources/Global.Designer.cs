@@ -601,6 +601,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Second Ethnic Group.
+        /// </summary>
+        public static string SecondEthnicGroup {
+            get {
+                return ResourceManager.GetString("SecondEthnicGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select.
         /// </summary>
         public static string Select {

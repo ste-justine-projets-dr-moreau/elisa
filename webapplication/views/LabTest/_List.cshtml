@@ -19,12 +19,12 @@
 }
 
 @Html.Grid(Model).Columns(columns =>
-            {
+{
 
-                columns.Add(c => c.Name).Titled(@Languages.Global.English).Filterable(true);
-                columns.Add(c => c.NameFr).Titled(@Languages.Global.French).Filterable(true);
-                columns.Add(c => c.SortOrder).Titled(Html.DisplayNameFor(x => x.SortOrder).ToString()).Filterable(true);
-                columns.Add(c => c.IsActive).Titled(Html.DisplayNameFor(x => x.IsActive).ToString()).Filterable(true);
-                columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString()).SetWidth("15%");
+    columns.Add(c => c.Name).Titled(@Languages.Global.English).Filterable(true);
+    columns.Add(c => c.NameFr).Titled(@Languages.Global.French).Filterable(true);
+    //columns.Add(c => c.SortOrder).Titled(Html.DisplayNameFor(x => x.SortOrder).ToString()).Filterable(true);
+    columns.Add(c => c.IsActive).Titled(Html.DisplayNameFor(x => x.IsActive).ToString()).Filterable(true);
+    columns.Add().Encoded(false).Sanitized(false).RenderValueAs(c => RenderActionColumn(c.Id).ToHtmlString()).SetWidth("15%");
 
-            }).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
+}).WithPaging(10).Sortable(true).SetLanguage(Session["Language"].ToString())
