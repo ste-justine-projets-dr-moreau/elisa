@@ -28,8 +28,6 @@ namespace WebApplication.Controllers
 
         }
 
-
-
         // GET: /Sampling/Details/5
         public ActionResult Details(int? id, string returnUrl)
         {
@@ -105,10 +103,12 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,BarCode,Iteration,Location,Comment,SamplingType_Id,SamplingStatus_Id,Appointment_Id")] Sampling sampling, string returnUrl)
+        public ActionResult Edit([Bind(Include= "Id,BarCode,Iteration,Location,Comment,SamplingType_Id,SamplingStatus_Id,Appointment_Id")] Sampling sampling, SamplingType samplingType, string returnUrl)
         {
             if (ModelState.IsValid)
             {
+                AddNewEntityIfNecessary(sampling, samplingType);
+
                 db.Entry(sampling).State = EntityState.Modified;
                 db.SaveChanges(User.Identity.Name);
                 if (!string.IsNullOrEmpty(returnUrl))
@@ -273,6 +273,24 @@ namespace WebApplication.Controllers
             sampling.SamplingStatus_Id = entity.SamplingStatus_Id;
             sampling.Appointment_Id = entity.Appointment_Id;
             return sampling;
+        }
+
+        private void AddNewEntityIfNecessary(Sampling sampling, SamplingType samplingType)
+        {
+            bool isSamplingTypeNeedToBeAdd = sampling.SamplingType_Id < 1;
+
+            if (isSamplingTypeNeedToBeAdd)
+            {
+                SamplingType newSamplingType = new SamplingType() {
+                    Name = samplingType.Name,
+                    NameFr = samplingType.Name
+                };
+
+                db.SamplingTypes.Add(newSamplingType);
+                db.SaveChanges();
+
+                sampling.SamplingType_Id = newSamplingType.Id;
+            }
         }
 
         #endregion
