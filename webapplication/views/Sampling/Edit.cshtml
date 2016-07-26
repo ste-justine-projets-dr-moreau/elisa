@@ -66,6 +66,8 @@
                                         @Html.LabelFor(model => model.SamplingType.Name, new { @class = "control-label col-md-4" })
                                         <div class="col-md-5">
                                             @Html.DropDownList("SamplingType_Id", String.Empty)
+                                            @Html.Hidden("SamplingType.Name")
+                                            @Html.Hidden("SamplingType.Id")
                                             @Html.ValidationMessageFor(model => model.SamplingType_Id)
                                         </div>
                                         <div class="form-group">
@@ -214,9 +216,13 @@
 </div>
 @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
-
+            <script src="~/Scripts/helpers.js"></script>
             <script>
                 $(document).ready(function () {
+
+                    setupChosenSelectWithAdd("#SamplingType_Id", "SamplingType.Name", "SamplingType.Id", "@Languages.Global.OneOption", "Press Enter to add new entry");
+
+
                     $("#divGenerateSampling").dialog({
                         autoOpen: false,
                         width: 'auto',
@@ -227,7 +233,7 @@
                             of: window
                         }
 
-                    }); 
+                    });
                     //$("#divGenerateSampling").dialog({
                     //    autoOpen: false,
                     //    width: 'auto',
@@ -244,11 +250,6 @@
                         width: "50%",
                         disable_search: true,
                         placeholder_text_single:"test"
-                    });
-                    $("#SamplingType_Id").chosen({
-                        no_results_text: "@Languages.Global.Select",
-                        width: "50%",
-                        disable_search: true
                     });
                     $("#tabs").tabs();
                     $("#btnCreateIteration").click(function () {

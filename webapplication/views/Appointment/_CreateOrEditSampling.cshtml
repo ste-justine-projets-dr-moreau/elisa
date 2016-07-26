@@ -45,6 +45,8 @@
                     @Html.LabelFor(model => model.SamplingType.Name, new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.DropDownListFor(model => model.SamplingType_Id, (IEnumerable<SelectListItem>)ViewBag.SamplingTypes, String.Empty, new { @class = "chosen" })
+                        @Html.Hidden("SamplingType.Name")
+                        @Html.Hidden("SamplingType.Id")
                         @Html.ValidationMessageFor(model => model.SamplingType_Id)
                     </div>
                 </div>
