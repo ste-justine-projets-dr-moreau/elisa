@@ -416,10 +416,10 @@
 
     $(document).ready(function () {
 
-        setupChosenSelectWithAdd("#City_Id", "City.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
-        setupChosenSelectWithAdd("#Family_Id", "Family.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
-        setupChosenSelectWithAdd("#FamilyRole_Id", "FamilyRole.Name", "", "@Languages.Global.OneOption", "Press Enter to add new entry");
-        setupChosenSelectWithAdd("#DiagnosesForParticipant", "DiagnosesNamesForParticipant", "", "@Languages.Global.SomeOptions", "Press Enter to add new entry", true);
+        setupChosenSelectWithAdd("#City_Id", "City.Name", "", "@Languages.Global.OneOption", "@Languages.Global.AddNewEntry");
+        setupChosenSelectWithAdd("#Family_Id", "Family.Name", "", "@Languages.Global.OneOption", "@Languages.Global.AddNewEntry");
+        setupChosenSelectWithAdd("#FamilyRole_Id", "FamilyRole.Name", "", "@Languages.Global.OneOption", "@Languages.Global.AddNewEntry");
+        setupChosenSelectWithAdd("#DiagnosesForParticipant", "DiagnosesNamesForParticipant", "", "@Languages.Global.SomeOptions", "@Languages.Global.AddNewEntry", true);
 
         $("#MedicalHistoriesForParticipant").chosen({
             placeholder_text_multiple: "@Languages.Global.SomeOptions",
