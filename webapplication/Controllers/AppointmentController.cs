@@ -8,6 +8,7 @@ using WebApplication.Helpers;
 using Appointment = Clinic.BackEnd.Models.Appointment;
 using Cobb = Clinic.BackEnd.Models.Cobb;
 using Sampling = Clinic.BackEnd.Models.Sampling;
+using Clinic.BackEnd.Models;
 
 namespace WebApplication.Controllers
 {
@@ -151,14 +152,14 @@ namespace WebApplication.Controllers
                     Text = Session["Language"].ToString().ToLower() == "en" ? st.Name : st.NameFr,
                 });
 
-            ViewBag.SamplingStatuses = db.SamplingStatus.ToList().Select(ss => 
+            ViewBag.SamplingStatuses = db.SamplingStatus.ToList().Select(ss =>
                 new SelectListItem
                 {
                     Value = ss.Id.ToString(),
                     Text = Session["Language"].ToString().ToLower() == "en" ? ss.Name : ss.NameFr,
                 });
 
-            return PartialView("_CreateOrEditSampling", new Sampling{ Appointment_Id = appointmentId});
+            return PartialView("_CreateOrEditSampling", new Sampling { Appointment_Id = appointmentId });
 
         }
         public ActionResult GetSampling(int samplingId)
@@ -216,8 +217,15 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult CreateOrEditSampling(Sampling sampling)
         {
+            // Bug fix
+            // Permet de mettre a true ModelState.IsValid
+            // Le binding ne se fait pas correctement pour SamplingType.Id.
+            ModelState.Remove("SamplingType.Id");
+
             if (ModelState.IsValid)
             {
+                AddNewEntityIfNecessary(sampling);
+
                 if (sampling.Id == 0)
                 {
                     db.Samplings.Add(sampling);
@@ -525,6 +533,27 @@ namespace WebApplication.Controllers
             sampling.SamplingStatus_Id = entity.SamplingStatus_Id;
             sampling.Appointment_Id = entity.Appointment_Id;
             return sampling;
+        }
+
+        private void AddNewEntityIfNecessary(Sampling sampling)
+        {
+            bool newSamplingTypeMustBeAdded =   sampling.SamplingType_Id < 1 &&
+                                                sampling.SamplingType.Name != String.Empty;
+
+            if (newSamplingTypeMustBeAdded)
+            {
+                SamplingType newSamplingType = new SamplingType() {
+                    IsActive = true,
+                    Name = sampling.SamplingType.Name,
+                    NameFr = sampling.SamplingType.Name
+                };
+
+                db.SamplingTypes.Add(newSamplingType);
+                db.SaveChanges();
+
+                sampling.SamplingType = newSamplingType;
+                sampling.SamplingType_Id = newSamplingType.Id;
+            } 
         }
 
         #endregion

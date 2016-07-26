@@ -319,4 +319,7 @@
   <data name="SecondEthnicGroup" xml:space="preserve">
     <value>Second ethnie</value>
   </data>
+  <data name="AddNewEntry" xml:space="preserve">
+    <value>Appuyez sur Entrée pour ajouter une nouvelle entrée</value>
+  </data>
 </root>

@@ -232,6 +232,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/helpers.js"></script>
     <script>
         $(document).ready(function () {
             $("#testingThisSelect").chosen();
@@ -300,9 +301,15 @@
                     url: "@Url.Content("~/Appointment/GetSampling")",
                     data: { samplingId: $self.attr("data-sampling-id") },
                     success: function (data) {
+
                         $("#addSamplingDialog").html(data);
                         $("#addSamplingDialog").dialog("open");
-                        $(".chosen").chosen();
+
+                        $(".chosen").chosen({
+                            no_results_text: "@Languages.Global.Select"
+                        });
+
+                        setupChosenSelectWithAdd("#SamplingType_Id", "SamplingType.Name", "SamplingType.Id", "@Languages.Global.OneOption", "@Languages.Global.AddNewEntry");
                     }
                 });
             });
@@ -324,14 +331,19 @@
                     url: "@Url.Content("~/Appointment/GetNewSampling")",
                     data: { appointmentId: $("#Id").val() },
                     success: function (data) {
+
                         $("#addSamplingDialog").html(data);
                         $("#addSamplingDialog").dialog("open");
+
+                        setupChosenSelectWithAdd("#SamplingType_Id", "SamplingType.Name", "SamplingType.Id", "@Languages.Global.OneOption", "@Languages.Global.AddNewEntry");
+
                         $(".chosen").chosen({
                             no_results_text: "@Languages.Global.Select",
                             width: "50%",
                             disable_search: true,
-                            placeholder_text_single: "test"
+                            placeholder_text_single: "@Languages.Global.OneOption"
                         });
+
                     }
                 });
             });

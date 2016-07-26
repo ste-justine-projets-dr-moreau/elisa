@@ -79,6 +79,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press Enter to add new entry.
+        /// </summary>
+        public static string AddNewEntry {
+            get {
+                return ResourceManager.GetString("AddNewEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administration.
         /// </summary>
         public static string Administration {

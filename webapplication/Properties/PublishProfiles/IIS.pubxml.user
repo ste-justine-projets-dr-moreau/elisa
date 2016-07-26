@@ -15,7 +15,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2012 10:01:58</publishTime>
     </File>
     <File Include="bin/Clinic.BackEnd.dll">
-      <publishTime>06/16/2016 10:12:34</publishTime>
+      <publishTime>07/21/2016 20:47:26</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -51,7 +51,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/11/2014 09:39:58</publishTime>
     </File>
     <File Include="bin/fr/Clinic.BackEnd.resources.dll">
-      <publishTime>06/16/2016 10:12:35</publishTime>
+      <publishTime>07/21/2016 20:47:26</publishTime>
     </File>
     <File Include="bin/fr/Hopital.SteJustine.BackEnd.resources.dll">
       <publishTime>10/24/2014 20:01:49</publishTime>
@@ -69,7 +69,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2013 10:57:12</publishTime>
     </File>
     <File Include="bin/fr/WebApplication.resources.dll">
-      <publishTime>06/16/2016 10:12:37</publishTime>
+      <publishTime>07/21/2016 20:47:29</publishTime>
     </File>
     <File Include="bin/GridMvc.dll">
       <publishTime>07/31/2014 15:25:24</publishTime>
@@ -112,6 +112,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/ko/System.Spatial.resources.dll">
       <publishTime>08/16/2013 10:57:12</publishTime>
+    </File>
+    <File Include="bin/MathNet.Numerics.dll">
+      <publishTime>07/03/2016 20:21:12</publishTime>
     </File>
     <File Include="bin/Microsoft.Data.Edm.dll">
       <publishTime>08/16/2013 10:43:10</publishTime>
@@ -180,7 +183,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2013 20:54:26</publishTime>
     </File>
     <File Include="bin/WebApplication.dll">
-      <publishTime>06/16/2016 10:12:37</publishTime>
+      <publishTime>07/21/2016 20:47:29</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>07/17/2013 17:03:52</publishTime>
@@ -453,7 +456,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/11/2016 21:56:17</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
       <publishTime>06/13/2016 12:21:50</publishTime>
@@ -510,7 +513,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Scripts/helpers.js">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/18/2016 08:54:49</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>06/13/2016 12:21:50</publishTime>
@@ -594,7 +597,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Analytique/Index.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/11/2016 21:56:17</publishTime>
     </File>
     <File Include="Views/Appointment/Create.cshtml">
       <publishTime>06/13/2016 12:21:50</publishTime>
@@ -606,13 +609,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/Edit.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/05/2016 21:41:53</publishTime>
     </File>
     <File Include="Views/Appointment/Index.cshtml">
       <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Appointment/_CobbEntryEditor.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/04/2016 01:20:42</publishTime>
     </File>
     <File Include="Views/Appointment/_ConfirmDeleteSampling.cshtml">
       <publishTime>06/13/2016 12:21:50</publishTime>
@@ -738,13 +741,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/16/2016 00:47:13</publishTime>
     </File>
     <File Include="Views/LabTest/Index.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/21/2016 20:44:51</publishTime>
     </File>
     <File Include="Views/LabTest/_List.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/21/2016 20:44:51</publishTime>
     </File>
     <File Include="Views/Participant/Create.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/21/2016 20:44:51</publishTime>
     </File>
     <File Include="Views/Participant/Create_OLD.cshtml">
       <publishTime>10/17/2014 15:01:25</publishTime>
@@ -756,13 +759,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2014 21:38:49</publishTime>
     </File>
     <File Include="Views/Participant/Edit.cshtml">
-      <publishTime>06/16/2016 10:10:15</publishTime>
+      <publishTime>07/21/2016 20:44:51</publishTime>
     </File>
     <File Include="Views/Participant/Index.cshtml">
-      <publishTime>06/16/2016 00:47:13</publishTime>
+      <publishTime>07/02/2016 10:15:09</publishTime>
     </File>
     <File Include="Views/Participant/_Appointment.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>07/15/2016 19:46:07</publishTime>
     </File>
     <File Include="Views/Participant/_ConfirmDeleteCorset.cshtml">
       <publishTime>06/13/2016 12:21:50</publishTime>
@@ -798,7 +801,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 12:21:50</publishTime>
     </File>
     <File Include="Views/Result/_Index.cshtml">
-      <publishTime>06/13/2016 12:21:50</publishTime>
+      <publishTime>06/16/2016 22:07:31</publishTime>
     </File>
     <File Include="Views/Sampling/Create.cshtml">
       <publishTime>06/13/2016 12:21:50</publishTime>
