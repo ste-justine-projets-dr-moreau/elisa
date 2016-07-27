@@ -49,7 +49,7 @@
                     </td>
 
                     <td>
-                        <input type="button" title="edit" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "Sampling", new { ID = item.Id })' ;" class="btn btn-info btn-xs pull-right" />
+                        <input type="button" title="edit" value='@Languages.Global.Edit' onclick="location.href='@Url.Action("edit", "Sampling", new { ID = item.Id, from_participant = 1 })' ;" class="btn btn-info btn-xs pull-right" />
                     </td>
                 </tr>
             }

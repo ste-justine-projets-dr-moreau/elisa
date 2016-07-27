@@ -199,7 +199,9 @@
                 </div>
                 <div class="btn-toolbar pull-right ">
                     <div>
-                        <a href="@Url.Content("~/Participant/Edit/" + Model.Participant_Id + "#tabs-2")" class="btn btn-danger  "><span>@Languages.Global.Cancel </span></a>
+                        <a href="@Url.Content("~/Participant/Edit/" + Model.Participant_Id + "#tabs-2")" class="btn btn-danger  ">
+                            <span>@Languages.Global.Cancel </span>
+                        </a>
                         @if (((List<string>)Session["UserRoles"]).Contains("Nurses"))
                         {
                             <input type="submit" value="@Languages.Global.Save" class="btn btn-success" />

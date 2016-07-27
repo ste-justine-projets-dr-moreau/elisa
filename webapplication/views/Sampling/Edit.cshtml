@@ -142,7 +142,21 @@
                 </div>
                 <div class="btn-toolbar pull-right ">
                     <div>
-                        <a href="@Url.Content("~/Sampling")" class="btn btn-danger  "><span style="color:white;">@Languages.Global.Cancel </span></a>
+                        @{
+                            bool isCameFromParticipant = Request.QueryString["from_participant"] != null;
+                            string cancelUrl = String.Empty;
+
+                            if (isCameFromParticipant)
+                            {
+                                cancelUrl = Url.Content("~/Participant/Edit/" + Model.Appointment.Participant_Id + "#tabs-3");
+                            } else {
+                                cancelUrl = Url.Content("~/Sampling");
+                            }
+                        }
+
+                        <a href="@cancelUrl" class="btn btn-danger">
+                            <span style="color:white;">@Languages.Global.Cancel </span>
+                        </a>
                         
                         @if (((List<string>)Session["UserRoles"]).Contains("Researcher") || ((List<string>)Session["UserRoles"]).Contains("Associate"))
                         {
