@@ -331,7 +331,7 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Family Historic.
+        ///   Looks up a localized string similar to Family History.
         /// </summary>
         public static string FamilyHistoric {
             get {
