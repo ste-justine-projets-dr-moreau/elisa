@@ -5,7 +5,7 @@
 
 
 
-    bool averageCobbComputed = (bool)ViewBag.AverageCobbComputed;
+    bool? averageCobbComputed = (bool?)ViewBag.AverageCobbComputed;
     double? averageCobb = (double?)ViewBag.AverageCobb;
 
     bool descriptivesStatsComputed = (bool)ViewBag.DescriptivesStatsComputed;
@@ -29,6 +29,134 @@
             <h2>Analytique</h2>
         </div>
     </div>
+
+    @{
+        List<SelectListItem> diagnosisList = new List<SelectListItem>();
+        List<SelectListItem> genderList = new List<SelectListItem>();
+        List<SelectListItem> studyVariableList = new List<SelectListItem>();
+
+        diagnosisList.Add(new SelectListItem() { Text = "SIA", Value = "1" });
+
+        genderList.Add(new SelectListItem() { Text = "Homme", Value = "1" });
+        genderList.Add(new SelectListItem() { Text = "Femme", Value = "2" });
+        genderList.Add(new SelectListItem() { Text = "Homme et femme", Value = "3" });
+
+        studyVariableList.Add(new SelectListItem() { Text = "Age", Value = "1" });
+        studyVariableList.Add(new SelectListItem() { Text = "Angle de Cobb", Value = "2" });
+    }
+
+    @using (Html.BeginForm("AnalyzeData", "Analytique", FormMethod.Post))
+    {
+
+    <div class="row">
+        <div class="col-md-2">Maladie</div>
+        <div class="col-md-10">
+            @Html.DropDownList("diagnosis", diagnosisList, "Choisir une maladie ...", null)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Sexe</div>
+        <div class="col-md-10">
+            @Html.DropDownList("gender", genderList, "Choisir un sexe ...", null)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Variable d'étude</div>
+        <div class="col-md-10">
+            @Html.DropDownList("studyVariable", studyVariableList, "Choisir une variable d'étude ...", null)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Filtre</div>
+        <div class="col-md-10">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <input name="submitButton" type="submit" value="Générer" />
+            <input name="submitButton" type="submit" value="Excel" />
+        </div>
+    </div>
+
+
+    
+
+        bool showStats = false;
+
+        if (ViewBag.analyzeStatComputed != null)
+        {
+            showStats = (bool)ViewBag.analyzeStatComputed;
+        }
+    
+
+    if (showStats)
+    {
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-2">
+                Taille
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatSampleSize
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Minimum
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatMin
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Maximum
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatMax
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Médian
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatMedian
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Moyenne
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatMean
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Écart-type
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatStandardDeviation
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                Variance
+            </div>
+            <div class="col-md-10">
+                @ViewBag.analyzeStatVariance
+            </div>
+        </div>
+    }
+
+    }
+    <hr />
+
     <div class="row">
         <div class="col-md-2">Source de donnée</div>
         <div class="col-md-10">
@@ -113,7 +241,7 @@
             <div class="col-md-2">
                 @Html.CheckBox("sexFilter")
                 Sexe
-            </div>
+            </div>bool showStats = false
             <div class="col-md-10">
                 @{
                     var listSex = new List<SelectListItem>();
@@ -146,7 +274,7 @@
             <div class="col-md-12">
 
 
-                @if (averageCobbComputed)
+                @if (averageCobbComputed.Value)
                 {
                     <span>Moyenne Cobb: </span>
                     if (averageCobb.HasValue)
@@ -165,7 +293,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                @if (averageCobbComputed) { 
+                @if (averageCobbComputed.Value) { 
                     foreach (dynamic item in ViewBag.ParticipantCobbs) {
                         <span>@item.ToString()</span><br />
                     }
