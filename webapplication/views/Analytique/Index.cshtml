@@ -31,18 +31,10 @@
     </div>
 
     @{
-        List<SelectListItem> diagnosisList = new List<SelectListItem>();
-        List<SelectListItem> genderList = new List<SelectListItem>();
-        List<SelectListItem> studyVariableList = new List<SelectListItem>();
-
-        diagnosisList.Add(new SelectListItem() { Text = "SIA", Value = "1" });
-
-        genderList.Add(new SelectListItem() { Text = "Homme", Value = "1" });
-        genderList.Add(new SelectListItem() { Text = "Femme", Value = "2" });
-        genderList.Add(new SelectListItem() { Text = "Homme et femme", Value = "3" });
-
-        studyVariableList.Add(new SelectListItem() { Text = "Age", Value = "1" });
-        studyVariableList.Add(new SelectListItem() { Text = "Angle de Cobb", Value = "2" });
+        List<SelectListItem> diagnosisList = (List<SelectListItem>) ViewBag.diagnosisList;
+        List<SelectListItem> genderList = (List<SelectListItem>) ViewBag.genderList;
+        List<SelectListItem> functionalGroupList = (List<SelectListItem>) ViewBag.functionalGroupList;
+        List<SelectListItem> studyVariableList = (List<SelectListItem>)ViewBag.studyVariableList;
     }
 
     @using (Html.BeginForm("AnalyzeData", "Analytique", FormMethod.Post))
@@ -61,6 +53,17 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2">Groupe fonctionnel</div>
+        <div class="col-md-10">
+            @Html.DropDownList("functionalGroup", functionalGroupList, "Choisir un groupe fonctionnel ...", null)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-2">Variable d'étude</div>
         <div class="col-md-10">
             @Html.DropDownList("studyVariable", studyVariableList, "Choisir une variable d'étude ...", null)
@@ -69,7 +72,8 @@
     <div class="row">
         <div class="col-md-2">Filtre</div>
         <div class="col-md-10">
-            
+            @Html.TextBox("FilterBegin")
+            @Html.TextBox("FilterEnd")
         </div>
     </div>
     <div class="row">
@@ -157,7 +161,7 @@
     }
     <hr />
 
-    <div class="row">
+    @*<div class="row">
         <div class="col-md-2">Source de donnée</div>
         <div class="col-md-10">
             <select id="lst-datasource">
@@ -395,7 +399,7 @@
                 </div>
             </div>
         }
-    </div>
+    </div>*@
 
 </div>
 
